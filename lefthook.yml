@@ -14,7 +14,8 @@ commit-msg:
       run: npx commitlint --edit
 pre-push:
   commands:
-    test: npx test
+    test:
+      run: npx jest
       
 # EXAMPLE USAGE:
 #
