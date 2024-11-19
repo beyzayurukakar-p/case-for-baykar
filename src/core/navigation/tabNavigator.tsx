@@ -4,7 +4,7 @@ import { HomeScreen } from '../../modules/home';
 import { ProfileScreen } from '../../modules/profile';
 import TabBarLabel from './components/TabLabel';
 
-export const mainTabNavigator = createBottomTabNavigator({
+export const tabNavigator = createBottomTabNavigator({
   screens: {
     Surveys: {
       screen: SurveyListScreen,
