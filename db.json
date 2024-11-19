@@ -1,15 +1,126 @@
 {
-    "users": [
+  "users": [
+    {
+      "id": 1,
+      "nickname": "Beyza",
+      "email": "",
+      "gender": "",
+      "password": "123",
+      "birthdate": ""
+    },
+    {
+      "id": 2,
+      "nickname": "Beyza2",
+      "email": "",
+      "gender": "",
+      "password": "456",
+      "birthdate": ""
+    }
+  ],
+  "surveys": [
+    {
+      "id": 1,
+      "title": "your-mode",
+      "questions": [
         {
-            "id": 1,
-            "name": "Beyza"
+          "id": 1,
+          "order": 0,
+          "type": "select-one",
+          "questionText": "how-do-you-feel-today",
+          "resultLabel": "your-mode-is",
+          "responseData": {
+            "options": [
+              {
+                "id": 1,
+                "label": "very-good",
+                "order": 0
+              },
+              {
+                "id": 2,
+                "label": "good",
+                "order": 1
+              },
+              {
+                "id": 3,
+                "label": "average",
+                "order": 2
+              },
+              {
+                "id": 4,
+                "label": "bad",
+                "order": 3
+              },
+              {
+                "id": 5,
+                "label": "very-bad",
+                "order": 4
+              }
+            ],
+            "colorizeOptions": "by-order"
+          }
         }
-    ],
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "your-mode",
+      "questions": [
+        {
+          "id": 1,
+          "order": 0,
+          "type": "select-one",
+          "questionText": "how-do-you-feel-today",
+          "resultLabel": "your-mode-is",
+          "responseData": {
+            "options": [
+              {
+                "label": "very-good",
+                "value": 4,
+                "order": 0
+              },
+              {
+                "label": "good",
+                "value": 3,
+                "order": 1
+              },
+              {
+                "label": "average",
+                "value": 2,
+                "order": 2
+              },
+              {
+                "label": "bad",
+                "value": 1,
+                "order": 3
+              },
+              {
+                "label": "very-bad",
+                "value": 0,
+                "order": 4
+              }
+            ],
+            "colorizeOptions": "by-order"
+          }
+        }
+      ]
+    }
+  ],
+  "translations": {
+    "tr": {
+      "your-mode-today": "Bugünkü Modunuz Nasıl?",
+      "how-do-you-feel-today": "Bugün kendinizi nasıl hissediyorsunuz?"
+    },
+    "en": {
+      "your-mode-today": "How is Your Mode Today?",
+      "how-do-you-feel-today": "How do you feel today?"
+    }
+  },
+  "userPreferences": [
+    {
+      "id": 1,
+      "userId": 1,
+      "theme": "light",
+      "locale": "en"
+    }
+  ]
+}
