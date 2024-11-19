@@ -1,7 +1,7 @@
-import { View } from 'react-native';
+import { Navigation } from './src/core/navigation/Navigation';
 
 const App = () => {
-  return <View />;
+  return <Navigation />;
 };
 
 export default App;
