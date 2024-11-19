@@ -108,11 +108,17 @@
   "translations": {
     "tr": {
       "your-mode-today": "Bugünkü Modunuz Nasıl?",
-      "how-do-you-feel-today": "Bugün kendinizi nasıl hissediyorsunuz?"
+      "how-do-you-feel-today": "Bugün kendinizi nasıl hissediyorsunuz?",
+      "home-screen-title": "Anasayfa",
+      "surveys-screen-title": "Anketler",
+      "profile-screen-title": "Profil"
     },
     "en": {
       "your-mode-today": "How is Your Mode Today?",
-      "how-do-you-feel-today": "How do you feel today?"
+      "how-do-you-feel-today": "How do you feel today?",
+      "home-screen-title": "Home",
+      "surveys-screen-title": "Surveys",
+      "profile-screen-title": "Profile"
     }
   },
   "userPreferences": [

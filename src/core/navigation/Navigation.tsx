@@ -1,19 +1,22 @@
 import { createStaticNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useIsSignedIn, useIsSignedOut } from '../auth';
-import { signedInStack } from './signedInStack';
+import { mainTabNavigator } from './mainTabNavigator';
 import { signedOutStack } from './signedOutStack';
 
 const RootStack = createStackNavigator({
   screens: {
-    Auth: {
+    SignedOut: {
       if: useIsSignedOut,
       screen: signedOutStack,
     },
-    Main: {
+    SignedIn: {
       if: useIsSignedIn,
-      screen: signedInStack,
+      screen: mainTabNavigator,
     },
+  },
+  screenOptions: {
+    headerShown: false,
   },
 });
 

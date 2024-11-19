@@ -5,4 +5,7 @@ export const signedOutStack = createStackNavigator({
   screens: {
     Auth: AuthScreen,
   },
+  screenOptions: {
+    headerShown: false,
+  },
 });
