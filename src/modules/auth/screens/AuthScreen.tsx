@@ -1,10 +1,11 @@
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import Background from '../components/background/Background';
 
 const AuthScreen = () => {
   return (
-    <View>
+    <Background>
       <Text>AuthScreen</Text>
-    </View>
+    </Background>
   );
 };
 
