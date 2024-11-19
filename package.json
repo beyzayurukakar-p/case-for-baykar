@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint \"**/*.{js,ts,tsx}\"",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "json-server": "json-server --watch db.json"
   },
   "dependencies": {
     "react": "18.3.1",
