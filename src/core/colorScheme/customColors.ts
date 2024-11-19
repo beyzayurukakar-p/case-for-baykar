@@ -42,6 +42,7 @@ export const customColors = {
     surfaceDisabled: 'rgba(27, 27, 31, 0.12)',
     onSurfaceDisabled: 'rgba(27, 27, 31, 0.38)',
     backdrop: 'rgba(47, 48, 56, 0.4)',
+    backdropInverse: 'rgba(255, 255, 255, 0.8)',
   },
   dark: {
     primary: 'rgb(187, 195, 255)',
@@ -84,5 +85,6 @@ export const customColors = {
     surfaceDisabled: 'rgba(228, 225, 230, 0.12)',
     onSurfaceDisabled: 'rgba(228, 225, 230, 0.38)',
     backdrop: 'rgba(47, 48, 56, 0.4)',
+    backdropInverse: 'rgba(255, 255, 255, 0.8)',
   },
 };

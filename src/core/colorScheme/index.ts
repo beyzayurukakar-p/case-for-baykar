@@ -1,2 +1,3 @@
 export { colorSchemeSlice, selectColorScheme } from './slice';
-export * from './themes';
+export * from './useAppTheme';
+export * from './useThemedStyles';
