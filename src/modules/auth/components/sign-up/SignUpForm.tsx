@@ -128,7 +128,7 @@ const SignUpForm = (props: SceneRendererProps) => {
         onPressMainButton={_onPress_Next}
         showAlternateButton
         alternateButtonPreTextKey="is-member"
-        alternateButtonTextKey="login"
+        alternateButtonTextKey="sign-in"
         onPressAlternateButton={_onPress_SignIn}
       />
     </View>

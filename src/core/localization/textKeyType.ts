@@ -7,7 +7,7 @@ export type TextKeys =
   | 'we-care-about-privacy'
   | 'password'
   | 'forgot-password'
-  | 'login'
+  | 'sign-in'
   | 'not-member'
   | 'create-account'
   | 'select-gender'
@@ -17,4 +17,7 @@ export type TextKeys =
   | 'birthdate'
   | 'next'
   | 'previous'
-  | 'is-member';
+  | 'is-member'
+  | 'something-went-wrong'
+  | 'missing-input'
+  | 'invalid-credentials';

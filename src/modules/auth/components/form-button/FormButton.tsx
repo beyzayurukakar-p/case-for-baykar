@@ -11,6 +11,7 @@ const FormButton = (props: {
   onPressAlternateButton?: () => void;
   alternateButtonTextKey?: TextKeys;
   alternateButtonPreTextKey?: TextKeys;
+  loading?: boolean;
 }) => {
   const { t } = useLocalization();
   const styles = useThemedStyles(createStyles);
@@ -19,9 +20,10 @@ const FormButton = (props: {
     <>
       <View style={styles.mainButtonContainer}>
         <Button
-          onPress={props.onPressMainButton}
+          onPress={props.loading ? undefined : props.onPressMainButton}
           mode="contained"
           contentStyle={styles.mainButton}
+          loading={props.loading}
         >
           {t(props.mainButtonTextKey)}
         </Button>
@@ -30,9 +32,10 @@ const FormButton = (props: {
         <View style={styles.alternateContainer}>
           <Text variant="bodyMedium">{t(props.alternateButtonPreTextKey as TextKeys)}</Text>
           <TouchableOpacity
-            onPress={props.onPressAlternateButton}
+            onPress={props.loading ? undefined : props.onPressAlternateButton}
             activeOpacity={0.4}
             style={styles.alternateButtonTouchable}
+            disabled={props.loading}
           >
             <Text
               variant="labelLarge"

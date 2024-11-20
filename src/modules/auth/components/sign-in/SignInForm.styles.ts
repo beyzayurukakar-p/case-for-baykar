@@ -14,12 +14,12 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
       maxHeight: dimensions.measure(150),
       paddingBottom: dimensions.measure(20),
     },
-    loginButtonContainer: {
+    signInButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
       marginTop: dimensions.rowSpace * 2,
     },
-    loginButton: {
+    signInButton: {
       height: dimensions.measure(40),
       borderRadius: 100,
       paddingHorizontal: dimensions.measure(40),

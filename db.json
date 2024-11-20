@@ -118,7 +118,7 @@
         "we-care-about-privacy": "Gizliliğinizi önemsiyoruz. Lütfen ad ve soyad girmeden kullanıcı adı oluşturunuz.",
         "password": "Şifre",
         "forgot-password": "Şifremi unuttum",
-        "login": "Giriş Yap",
+        "sign-in": "Giriş Yap",
         "not-member": "Üye değil misiniz?",
         "create-account": "Hesap Oluştur",
         "select-gender": "Cinsiyetinizi seçin",
@@ -128,7 +128,10 @@
         "birthdate": "Doğum Tarihi",
         "next": "İleri",
         "previous": "Geri",
-        "is-member": "Hesabınız var mı?"
+        "is-member": "Hesabınız var mı?",
+        "something-went-wrong": "Bir sorun oluştu",
+        "invalid-credentials": "Kullanıcı adı veya şifre yanlış",
+        "missing-input": "Lütfen tüm alanları doldurun!"
       }
     },
     "en": {
@@ -143,7 +146,7 @@
         "we-care-about-privacy": "We care about your privacy. Please create a nickname without entering your name or surname.",
         "password": "Password",
         "forgot-password": "Forgot password",
-        "login": "Sign In",
+        "sign-in": "Sign In",
         "not-member": "Not a member?",
         "create-account": "Create Account",
         "select-gender": "Select your gender",
@@ -153,7 +156,10 @@
         "birthdate": "Birthdate",
         "next": "Next",
         "previous": "Back",
-        "is-member": "Have an account?"
+        "is-member": "Have an account?",
+        "something-went-wrong": "Something went wrong!",
+        "invalid-credentials": "Nickname or password is wrong!",
+        "missing-input": "Please fill in all the fields!"
       }
     }
   },

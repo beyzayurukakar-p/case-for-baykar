@@ -8,17 +8,52 @@ import { SceneRendererProps } from 'react-native-tab-view';
 import NicknameInput from '../nickname-input/NicknameInput';
 import PasswordInput from '../password-input/PasswordInput';
 import FormButton from '../form-button/FormButton';
+import { signin } from '../../services/signin';
+import { useService } from '../../../../common/services/useService';
+import Toast from 'react-native-toast-message';
+import { User } from '../../../../core/user/types';
+import { useAppDispatch } from '../../../../core/store';
+import { userSlice } from '../../../../core/user';
 
 const SignInForm = (props: SceneRendererProps) => {
+  const dispatch = useAppDispatch();
+
   const { t } = useLocalization();
   const styles = useThemedStyles(createStyles);
+  const { loading, request: requestSignIn } = useService(signin);
 
   const [nickname, setNickname] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  const _onPress_ForgotPassword = () => {};
+  const _onPress_ForgotPassword = () => {
+    Toast.show({
+      type: 'info',
+      text1: ':(',
+    });
+  };
 
-  const _onPress_Login = () => {};
+  const _onSignInSuccessful = (data?: User) => {
+    dispatch(userSlice.actions.setUser(data || null));
+  };
+
+  const _onPress_SignIn = () => {
+    if (nickname !== undefined && password !== undefined) {
+      requestSignIn(
+        {
+          nickname,
+          password,
+        },
+        {
+          onSuccess: _onSignInSuccessful,
+        }
+      );
+    } else {
+      Toast.show({
+        type: 'error',
+        text1: 'Lütfen kullanıcı adı ve şifre alanlarını doldurun.',
+      });
+    }
+  };
 
   const _onPress_CreateAccount = () => {
     props.jumpTo('signUp');
@@ -45,14 +80,15 @@ const SignInForm = (props: SceneRendererProps) => {
         onPressForgotPassword={_onPress_ForgotPassword}
       />
 
-      {/* Login Button */}
+      {/* SignIn Button */}
       <FormButton
-        mainButtonTextKey="login"
-        onPressMainButton={_onPress_Login}
+        mainButtonTextKey="sign-in"
+        onPressMainButton={_onPress_SignIn}
         showAlternateButton
         alternateButtonPreTextKey="not-member"
         alternateButtonTextKey="create-account"
         onPressAlternateButton={_onPress_CreateAccount}
+        loading={loading}
       />
     </View>
   );

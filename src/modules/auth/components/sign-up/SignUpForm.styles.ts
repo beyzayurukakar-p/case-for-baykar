@@ -2,7 +2,7 @@ import { StyleSheet } from 'react-native';
 import { CreateStylesParams } from '../../../../core/colorScheme';
 import dimensions from '../../../../common/styling/dimensions';
 
-export const createStyles = ({ colors }: CreateStylesParams) =>
+export const createStyles = ({ colors: _colors }: CreateStylesParams) =>
   StyleSheet.create({
     container: {
       flex: 1,
@@ -43,10 +43,4 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
       marginTop: dimensions.measure(5),
     },
     isMemberText: {},
-    loginTouchable: {
-      paddingHorizontal: dimensions.measure(3),
-    },
-    loginText: {
-      color: colors.primary,
-    },
   });

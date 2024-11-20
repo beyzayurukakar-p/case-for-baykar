@@ -1,6 +1,6 @@
 import { createStaticNavigation } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { useIsSignedIn, useIsSignedOut } from '../auth';
+import { useIsSignedIn, useIsSignedOut } from '../user';
 import { signedOutStack } from './signedOutStack';
 import { signedInStack } from './signedInStack';
 
