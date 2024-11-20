@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 import { CreateStylesParams } from '../../../../core/colorScheme';
 import dimensions from '../../../../common/styling/dimensions';
 
-const SPACE = dimensions.measure(12);
 export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({
     container: {
@@ -18,7 +17,7 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     titleText: {},
     nicknameNoteText: {
       marginTop: dimensions.measure(5),
-      marginBottom: SPACE,
+      marginBottom: dimensions.rowSpace,
     },
     passwordInput: {},
     forgotPasswordTouchable: {
@@ -31,12 +30,12 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     loginButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
-      marginTop: SPACE * 2,
+      marginTop: dimensions.rowSpace * 2,
     },
     loginButton: {
       height: dimensions.measure(40),
       borderRadius: 100,
-      paddingHorizontal: dimensions.measure(10),
+      paddingHorizontal: dimensions.measure(40),
     },
     notMemberContainer: {
       flexDirection: 'row',

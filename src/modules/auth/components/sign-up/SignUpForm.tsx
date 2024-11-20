@@ -137,7 +137,7 @@ const SignUpForm = (props: SceneRendererProps) => {
           variant="bodyMedium"
           style={styles.isMemberText}
         >
-          {t('not-member')}
+          {t('is-member')}
         </Text>
         <TouchableOpacity
           onPress={_onPress_SignIn}
@@ -148,7 +148,7 @@ const SignUpForm = (props: SceneRendererProps) => {
             variant="labelLarge"
             style={styles.loginText}
           >
-            {t('create-account')}
+            {t('login')}
           </Text>
         </TouchableOpacity>
       </View>

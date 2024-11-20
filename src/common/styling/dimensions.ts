@@ -29,4 +29,5 @@ export default {
   pageMargin: measure(15),
   elevation,
   isScreenRatioSmall,
+  rowSpace: measure(12),
 };
