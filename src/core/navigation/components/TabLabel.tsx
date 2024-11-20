@@ -1,7 +1,7 @@
-import { useLocalization } from '../../localization/useLocale';
+import { TextKeys, useLocalization } from '../../localization';
 import { useTheme, Text } from 'react-native-paper';
 
-const TabBarLabel = (props: { focused: boolean; textId: string }) => {
+const TabBarLabel = (props: { focused: boolean; textKey: TextKeys }) => {
   const { t } = useLocalization();
   const theme = useTheme();
   return (
@@ -10,7 +10,7 @@ const TabBarLabel = (props: { focused: boolean; textId: string }) => {
         color: theme.colors.onSurface,
       }}
     >
-      {t(props.textId)}
+      {t(props.textKey)}
     </Text>
   );
 };

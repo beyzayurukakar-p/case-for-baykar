@@ -10,7 +10,12 @@ export const tabNavigator = createBottomTabNavigator({
       screen: SurveyListScreen,
       options: {
         tabBarLabel: ({ focused }) => {
-          return <TabBarLabel focused={focused} textId="surveys-screen-title" />;
+          return (
+            <TabBarLabel
+              focused={focused}
+              textKey="surveys-screen-title"
+            />
+          );
         },
       },
     },
@@ -18,7 +23,12 @@ export const tabNavigator = createBottomTabNavigator({
       screen: HomeScreen,
       options: {
         tabBarLabel: ({ focused }) => {
-          return <TabBarLabel focused={focused} textId="home-screen-title" />;
+          return (
+            <TabBarLabel
+              focused={focused}
+              textKey="home-screen-title"
+            />
+          );
         },
       },
     },
@@ -26,7 +36,12 @@ export const tabNavigator = createBottomTabNavigator({
       screen: ProfileScreen,
       options: {
         tabBarLabel: ({ focused }) => {
-          return <TabBarLabel focused={focused} textId="profile-screen-title" />;
+          return (
+            <TabBarLabel
+              focused={focused}
+              textKey="profile-screen-title"
+            />
+          );
         },
       },
     },

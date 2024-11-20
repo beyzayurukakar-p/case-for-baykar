@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { LANGUAGES } from './languages';
+import { TextKeys } from './textKeyType';
 
 export const useLocalization = () => {
   const localization = useTranslation();
@@ -12,8 +13,15 @@ export const useLocalization = () => {
     [localization.i18n]
   );
 
+  const t = useCallback(
+    (key: TextKeys) => {
+      return localization.t(key);
+    },
+    [localization]
+  );
+
   return {
-    t: localization.t,
+    t,
     changeLanguage,
   };
 };
