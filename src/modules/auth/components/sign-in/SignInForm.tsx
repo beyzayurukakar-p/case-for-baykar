@@ -4,8 +4,9 @@ import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SignInForm.styles';
 import { useState } from 'react';
+import { SceneRendererProps } from 'react-native-tab-view';
 
-const SignInForm = (props: { onPressCreateAccount: () => void }) => {
+const SignInForm = (props: SceneRendererProps) => {
   const { t } = useLocalization();
   const styles = useThemedStyles(createStyles);
 
@@ -18,6 +19,10 @@ const SignInForm = (props: { onPressCreateAccount: () => void }) => {
   const _onPress_ForgotPassword = () => {};
 
   const _onPress_Login = () => {};
+
+  const _onPress_CreateAccount = () => {
+    props.jumpTo('signUp');
+  };
 
   return (
     <View style={styles.container}>
@@ -89,7 +94,7 @@ const SignInForm = (props: { onPressCreateAccount: () => void }) => {
           {t('not-member')}
         </Text>
         <TouchableOpacity
-          onPress={props.onPressCreateAccount}
+          onPress={_onPress_CreateAccount}
           activeOpacity={0.4}
           style={styles.createAccountTouchable}
         >

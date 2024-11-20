@@ -120,7 +120,15 @@
         "forgot-password": "Şifremi unuttum",
         "login": "Giriş Yap",
         "not-member": "Üye değil misiniz?",
-        "create-account": "Hesap Oluştur"
+        "create-account": "Hesap Oluştur",
+        "select-gender": "Cinsiyetinizi seçin",
+        "female": "Kadın",
+        "male": "Erkek",
+        "email": "E-posta",
+        "birthdate": "Doğum Tarihi",
+        "next": "İleri",
+        "previous": "Geri",
+        "is-member": "Hesabınız var mı?"
       }
     },
     "en": {
@@ -137,7 +145,15 @@
         "forgot-password": "Forgot password",
         "login": "Sign In",
         "not-member": "Not a member?",
-        "create-account": "Create Account"
+        "create-account": "Create Account",
+        "select-gender": "Select your gender",
+        "female": "Female",
+        "male": "Male",
+        "email": "E-mail",
+        "birthdate": "Birthdate",
+        "next": "Next",
+        "previous": "Back",
+        "is-member": "Have an account?"
       }
     }
   },

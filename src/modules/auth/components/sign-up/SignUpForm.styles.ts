@@ -7,48 +7,47 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({
     container: {
       flex: 1,
+      paddingTop: SPACE,
     },
-    titleContainer: {
-      flexGrow: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      maxHeight: dimensions.measure(150),
-      paddingBottom: dimensions.measure(20),
+    spaceBelow: {
+      marginBottom: SPACE,
     },
-    titleText: {},
+    genderInputLabel: {
+      marginBottom: dimensions.measure(7),
+    },
+    genderInputContainer: {
+      flexDirection: 'row',
+      columnGap: dimensions.measure(10),
+      marginBottom: SPACE,
+    },
+    genderChipContainer: {
+      flex: 1,
+    },
     nicknameNoteText: {
       marginTop: dimensions.measure(5),
       marginBottom: SPACE,
     },
-    passwordInput: {},
-    forgotPasswordTouchable: {
-      alignSelf: 'flex-end',
-      paddingVertical: dimensions.measure(3),
-    },
-    forgotPasswordText: {
-      color: colors.onSurface,
-    },
-    loginButtonContainer: {
+    nextButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
-      marginTop: SPACE * 2,
+      marginTop: dimensions.measure(20),
     },
-    loginButton: {
+    nextButton: {
       height: dimensions.measure(40),
       borderRadius: 100,
       paddingHorizontal: dimensions.measure(10),
     },
-    notMemberContainer: {
+    isMemberContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: dimensions.measure(5),
     },
-    notMemberText: {},
-    createAccountTouchable: {
+    isMemberText: {},
+    loginTouchable: {
       paddingHorizontal: dimensions.measure(3),
     },
-    createAccountText: {
+    loginText: {
       color: colors.primary,
     },
   });

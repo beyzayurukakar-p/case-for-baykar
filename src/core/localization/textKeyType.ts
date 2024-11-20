@@ -9,4 +9,12 @@ export type TextKeys =
   | 'forgot-password'
   | 'login'
   | 'not-member'
-  | 'create-account';
+  | 'create-account'
+  | 'select-gender'
+  | 'female'
+  | 'male'
+  | 'email'
+  | 'birthdate'
+  | 'next'
+  | 'previous'
+  | 'is-member';
