@@ -7,7 +7,10 @@ import { useThemedStyles } from '../../../../core/colorScheme';
 const Background = (props: PropsWithChildren<{}>) => {
   const styles = useThemedStyles(createStyles);
   return (
-    <ImageBackground style={styles.container} source={imageSources.background()}>
+    <ImageBackground
+      style={styles.container}
+      source={imageSources.background()}
+    >
       <View style={styles.innerContainer}>
         <View style={styles.contentContainer}>{props.children}</View>
       </View>

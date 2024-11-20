@@ -94,7 +94,8 @@
           "tabWidth": 2,
           "trailingComma": "es5",
           "useTabs": false,
-          "printWidth": 100
+          "printWidth": 100,
+          "singleAttributePerLine": true
         }
       ]
     },
