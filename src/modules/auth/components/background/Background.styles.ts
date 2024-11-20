@@ -2,6 +2,11 @@ import { StyleSheet } from 'react-native';
 import dimensions from '../../../../common/styling/dimensions';
 import { CreateStylesParams } from '../../../../core/colorScheme';
 
+export const CONTENT_NORMAL_HEIGHT = dimensions.isScreenRatioSmall
+  ? dimensions.percentOfHeight(90)
+  : dimensions.percentOfHeight(70);
+export const CONTENT_HEIGHT_FOR_KEYBOARD = dimensions.percentOfHeight(90);
+
 export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({
     container: {
@@ -15,9 +20,6 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
       justifyContent: 'flex-end',
     },
     contentContainer: {
-      height: dimensions.isScreenRatioSmall
-        ? dimensions.percentOfHeight(90)
-        : dimensions.percentOfHeight(70),
       backgroundColor: colors.backdropInverse,
       borderTopLeftRadius: dimensions.measure(50),
       borderTopRightRadius: dimensions.measure(50),

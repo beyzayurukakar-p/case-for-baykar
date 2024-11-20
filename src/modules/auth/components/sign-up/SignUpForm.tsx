@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Chip, Text, TextInput } from 'react-native-paper';
 import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
@@ -135,7 +135,11 @@ const SignUpForm = (props: SceneRendererProps) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.scrollContentContainer}
+      showsVerticalScrollIndicator={false}
+    >
       {_renderGenderInput()}
 
       {/* Email input */}
@@ -172,7 +176,7 @@ const SignUpForm = (props: SceneRendererProps) => {
         onPressAlternateButton={_onPress_SignIn}
         loading={loading}
       />
-    </View>
+    </ScrollView>
   );
 };
 

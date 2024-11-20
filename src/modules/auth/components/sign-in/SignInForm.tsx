@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { Text } from 'react-native-paper';
 import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
@@ -68,7 +68,11 @@ const SignInForm = (props: SceneRendererProps) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={styles.scrollContentContainer}
+      showsVerticalScrollIndicator={false}
+    >
       {/* Title */}
       <View style={styles.titleContainer}>
         <Text variant="headlineSmall">{t('welcome')}</Text>
@@ -98,7 +102,7 @@ const SignInForm = (props: SceneRendererProps) => {
         onPressAlternateButton={_onPress_CreateAccount}
         loading={loading}
       />
-    </View>
+    </ScrollView>
   );
 };
 

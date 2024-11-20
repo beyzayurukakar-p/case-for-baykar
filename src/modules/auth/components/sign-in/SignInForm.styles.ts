@@ -7,12 +7,14 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     container: {
       flex: 1,
     },
+    scrollContentContainer: {
+      paddingBottom: dimensions.measure(300),
+    },
     titleContainer: {
-      flexGrow: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      maxHeight: dimensions.measure(150),
-      paddingBottom: dimensions.measure(20),
+      paddingTop: dimensions.measure(30),
+      paddingBottom: dimensions.measure(50),
     },
     signInButtonContainer: {
       flexDirection: 'row',

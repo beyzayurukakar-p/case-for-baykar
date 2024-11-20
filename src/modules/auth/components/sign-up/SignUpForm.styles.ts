@@ -8,6 +8,9 @@ export const createStyles = ({ colors: _colors }: CreateStylesParams) =>
       flex: 1,
       paddingTop: dimensions.rowSpace,
     },
+    scrollContentContainer: {
+      paddingBottom: dimensions.measure(300),
+    },
     spaceBelow: {
       marginBottom: dimensions.rowSpace,
     },
