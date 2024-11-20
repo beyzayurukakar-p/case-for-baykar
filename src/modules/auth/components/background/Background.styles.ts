@@ -16,8 +16,8 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     },
     contentContainer: {
       height: dimensions.isScreenRatioSmall
-        ? dimensions.percentOfHeight(80)
-        : dimensions.percentOfHeight(65),
+        ? dimensions.percentOfHeight(90)
+        : dimensions.percentOfHeight(70),
       backgroundColor: colors.backdropInverse,
       borderTopLeftRadius: dimensions.measure(50),
       borderTopRightRadius: dimensions.measure(50),

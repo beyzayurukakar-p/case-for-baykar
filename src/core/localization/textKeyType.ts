@@ -5,4 +5,8 @@ export type TextKeys =
   | 'welcome'
   | 'nickname'
   | 'we-care-about-privacy'
-  | 'password';
+  | 'password'
+  | 'forgot-password'
+  | 'login'
+  | 'not-member'
+  | 'create-account';

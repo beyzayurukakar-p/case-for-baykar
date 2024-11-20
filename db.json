@@ -112,7 +112,15 @@
         "how-do-you-feel-today": "Bugün kendinizi nasıl hissediyorsunuz?",
         "home-screen-title": "Anasayfa",
         "surveys-screen-title": "Anketler",
-        "profile-screen-title": "Profil"
+        "profile-screen-title": "Profil",
+        "welcome": "Hoşgeldiniz",
+        "nickname": "Kullanıcı Adı",
+        "we-care-about-privacy": "Gizliliğinizi önemsiyoruz. Lütfen ad ve soyad girmeden kullanıcı adı oluşturunuz.",
+        "password": "Şifre",
+        "forgot-password": "Şifremi unuttum",
+        "login": "Giriş Yap",
+        "not-member": "Üye değil misiniz?",
+        "create-account": "Hesap Oluştur"
       }
     },
     "en": {
@@ -121,7 +129,15 @@
         "how-do-you-feel-today": "How do you feel today?",
         "home-screen-title": "Home",
         "surveys-screen-title": "Surveys",
-        "profile-screen-title": "Profile"
+        "profile-screen-title": "Profile",
+        "welcome": "Welcome",
+        "nickname": "Nickname",
+        "we-care-about-privacy": "We care about your privacy. Please create a nickname without entering your name or surname.",
+        "password": "Password",
+        "forgot-password": "Forgot password",
+        "login": "Sign In",
+        "not-member": "Not a member?",
+        "create-account": "Create Account"
       }
     }
   },
