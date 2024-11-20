@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
-import { Button, Icon, Switch, Text } from 'react-native-paper';
+import { Icon, Switch, Text } from 'react-native-paper';
 import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SignUpAgreement.styles';
 import { SceneRendererProps } from 'react-native-tab-view';
+import FormButton from '../form-button/FormButton';
 
 const SignUpAgreement = (props: SceneRendererProps) => {
   const { t } = useLocalization();
@@ -43,16 +44,15 @@ const SignUpAgreement = (props: SceneRendererProps) => {
       {_renderSwitch('DenemeA', agreedA, () => setAgreedA((prev) => !prev))}
       {_renderSwitch('DenemeB', agreedB, () => setAgreedB((prev) => !prev))}
       {_renderSwitch('DenemeC', agreedC, () => setAgreedC((prev) => !prev))}
+
       {/* Next Button */}
-      <View style={styles.nextButtonContainer}>
-        <Button
-          onPress={() => {}}
-          mode="contained"
-          contentStyle={styles.nextButton}
-        >
-          {t('next')}
-        </Button>
-      </View>
+      <FormButton
+        mainButtonTextKey="next"
+        onPressMainButton={() => {}}
+        showAlternateButton={false}
+      />
+
+      {/* Back Button */}
       <TouchableOpacity
         onPress={_onPress_Back}
         activeOpacity={0.4}

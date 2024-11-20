@@ -1,5 +1,5 @@
-import { TouchableOpacity, View } from 'react-native';
-import { Button, Chip, Text, TextInput } from 'react-native-paper';
+import { View } from 'react-native';
+import { Chip, Text, TextInput } from 'react-native-paper';
 import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SignUpForm.styles';
@@ -7,19 +7,21 @@ import { useState } from 'react';
 import { SceneRendererProps } from 'react-native-tab-view';
 import { DatePickerModal } from 'react-native-paper-dates';
 import { formatDate } from 'date-fns';
+import NicknameInput from '../nickname-input/NicknameInput';
+import PasswordInput from '../password-input/PasswordInput';
+import FormButton from '../form-button/FormButton';
 
 const SignUpForm = (props: SceneRendererProps) => {
   const { t, currentLanguage, dateLocale } = useLocalization();
   const styles = useThemedStyles(createStyles);
 
   const [gender, setGender] = useState<'male' | 'female'>();
+  const [nickname, setNickname] = useState<string>();
+  const [email, setEmail] = useState<string>();
+  const [password, setPassword] = useState<string>();
   const [birthdate, setBirthdate] = useState<Date>();
-  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
-  const [isPasswordHidden, setIsPasswordHidden] = useState<boolean>(true);
 
-  const _onPress_ShowHidePassword = () => {
-    setIsPasswordHidden((prev) => !prev);
-  };
+  const [isDatePickerVisible, setIsDatePickerVisible] = useState(false);
 
   const _onConfirmBirthdate = (params: { date: Date | undefined }) => {
     setBirthdate(params.date);
@@ -27,6 +29,7 @@ const SignUpForm = (props: SceneRendererProps) => {
   };
 
   const _onPress_Next = () => {
+    // TODO: validate fields
     props.jumpTo('agreement');
   };
 
@@ -34,124 +37,100 @@ const SignUpForm = (props: SceneRendererProps) => {
     props.jumpTo('signIn');
   };
 
+  const _renderGenderInput = () => {
+    return (
+      <>
+        <Text
+          variant="bodyLarge"
+          style={styles.genderInputLabel}
+        >
+          {t('select-gender')}
+        </Text>
+        <View style={styles.genderInputContainer}>
+          <View style={styles.genderChipContainer}>
+            <Chip
+              onPress={() => setGender('female')}
+              selected={gender === 'female'}
+              mode="outlined"
+            >
+              {t('female')}
+            </Chip>
+          </View>
+          <View style={styles.genderChipContainer}>
+            <Chip
+              onPress={() => setGender('male')}
+              selected={gender === 'male'}
+              mode="outlined"
+            >
+              {t('male')}
+            </Chip>
+          </View>
+        </View>
+      </>
+    );
+  };
+
+  const _renderBirthdateInput = () => {
+    return (
+      <>
+        <TextInput
+          mode="outlined"
+          label={t('birthdate')}
+          right={<TextInput.Icon icon={'calendar'} />}
+          value={birthdate ? formatDate(birthdate, 'PP', { locale: dateLocale }) : ''}
+          editable={false}
+          onPress={() => setIsDatePickerVisible(true)}
+        />
+        <DatePickerModal
+          locale={currentLanguage}
+          mode="single"
+          visible={isDatePickerVisible}
+          onDismiss={() => setIsDatePickerVisible(false)}
+          date={birthdate}
+          onConfirm={_onConfirmBirthdate}
+          validRange={{ endDate: new Date() }}
+        />
+      </>
+    );
+  };
+
   return (
     <View style={styles.container}>
-      <Text
-        variant="bodyLarge"
-        style={styles.genderInputLabel}
-      >
-        {t('select-gender')}
-      </Text>
-      <View style={styles.genderInputContainer}>
-        <View style={styles.genderChipContainer}>
-          <Chip
-            onPress={() => setGender('female')}
-            selected={gender === 'female'}
-            mode="outlined"
-          >
-            {t('female')}
-          </Chip>
-        </View>
-        <View style={styles.genderChipContainer}>
-          <Chip
-            onPress={() => setGender('male')}
-            selected={gender === 'male'}
-            mode="outlined"
-          >
-            {t('male')}
-          </Chip>
-        </View>
-      </View>
+      {_renderGenderInput()}
 
       {/* Email input */}
       <TextInput
+        value={email}
+        onChangeText={setEmail}
         mode="outlined"
         label={t('email')}
         style={styles.spaceBelow}
       />
 
       {/* Nickname input */}
-      <TextInput
-        mode="outlined"
-        label={t('nickname')}
+      <NicknameInput
+        value={nickname}
+        onChange={setNickname}
       />
-      <Text
-        variant="bodySmall"
-        style={styles.nicknameNoteText}
-      >
-        {t('we-care-about-privacy')}
-      </Text>
 
       {/* Password input */}
-      <TextInput
-        mode="outlined"
-        label={t('password')}
-        right={
-          <TextInput.Icon
-            icon={isPasswordHidden ? 'eye-off' : 'eye'}
-            onPress={_onPress_ShowHidePassword}
-          />
-        }
-        style={styles.spaceBelow}
-        secureTextEntry={isPasswordHidden}
+      <PasswordInput
+        value={password}
+        onChange={setPassword}
+        showForgotPassword={false}
       />
 
-      {/* Birthdate input */}
-      <TextInput
-        mode="outlined"
-        label={t('birthdate')}
-        right={
-          <TextInput.Icon
-            icon={'calendar'}
-            onPress={_onPress_ShowHidePassword}
-          />
-        }
-        value={birthdate ? formatDate(birthdate, 'PP', { locale: dateLocale }) : ''}
-        editable={false}
-        onPress={() => setIsDatePickerVisible(true)}
-      />
-      <DatePickerModal
-        locale={currentLanguage}
-        mode="single"
-        visible={isDatePickerVisible}
-        onDismiss={() => setIsDatePickerVisible(false)}
-        date={birthdate}
-        onConfirm={_onConfirmBirthdate}
-        validRange={{ endDate: new Date() }}
-      />
+      {_renderBirthdateInput()}
 
       {/* Next Button */}
-      <View style={styles.nextButtonContainer}>
-        <Button
-          onPress={_onPress_Next}
-          mode="contained"
-          contentStyle={styles.nextButton}
-        >
-          {t('next')}
-        </Button>
-      </View>
-
-      {/* Go to Signin */}
-      <View style={styles.isMemberContainer}>
-        <Text
-          variant="bodyMedium"
-          style={styles.isMemberText}
-        >
-          {t('is-member')}
-        </Text>
-        <TouchableOpacity
-          onPress={_onPress_SignIn}
-          activeOpacity={0.4}
-          style={styles.loginTouchable}
-        >
-          <Text
-            variant="labelLarge"
-            style={styles.loginText}
-          >
-            {t('login')}
-          </Text>
-        </TouchableOpacity>
-      </View>
+      <FormButton
+        mainButtonTextKey="next"
+        onPressMainButton={_onPress_Next}
+        showAlternateButton
+        alternateButtonPreTextKey="is-member"
+        alternateButtonTextKey="login"
+        onPressAlternateButton={_onPress_SignIn}
+      />
     </View>
   );
 };

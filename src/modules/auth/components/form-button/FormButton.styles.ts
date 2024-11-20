@@ -4,37 +4,26 @@ import dimensions from '../../../../common/styling/dimensions';
 
 export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({
-    container: {
-      flex: 1,
-    },
-    titleContainer: {
-      flexGrow: 1,
-      justifyContent: 'center',
-      alignItems: 'center',
-      maxHeight: dimensions.measure(150),
-      paddingBottom: dimensions.measure(20),
-    },
-    loginButtonContainer: {
+    mainButtonContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
       marginTop: dimensions.rowSpace * 2,
     },
-    loginButton: {
+    mainButton: {
       height: dimensions.measure(40),
       borderRadius: 100,
       paddingHorizontal: dimensions.measure(40),
     },
-    notMemberContainer: {
+    alternateContainer: {
       flexDirection: 'row',
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: dimensions.measure(5),
     },
-    notMemberText: {},
-    createAccountTouchable: {
+    alternateButtonTouchable: {
       paddingHorizontal: dimensions.measure(3),
     },
-    createAccountText: {
+    alternateButtonText: {
       color: colors.primary,
     },
   });
