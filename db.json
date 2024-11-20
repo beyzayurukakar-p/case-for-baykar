@@ -15,6 +15,14 @@
       "gender": "",
       "password": "456",
       "birthdate": ""
+    },
+    {
+      "nickname": "asdasd",
+      "password": "asdasd",
+      "email": "Asdasd",
+      "gender": "female",
+      "birthdate": "2024-11-17T23:59:59.999Z",
+      "id": 3
     }
   ],
   "surveys": [
@@ -128,10 +136,13 @@
         "birthdate": "Doğum Tarihi",
         "next": "İleri",
         "previous": "Geri",
+        "accept-and-create": "Kabul Et ve Oluştur",
         "is-member": "Hesabınız var mı?",
         "something-went-wrong": "Bir sorun oluştu",
         "invalid-credentials": "Kullanıcı adı veya şifre yanlış",
-        "missing-input": "Lütfen tüm alanları doldurun!"
+        "missing-input": "Lütfen tüm alanları doldurun!",
+        "user-exists": "Bu kullanıcı adına sahip bir kullanıcı bulunmaktadır!",
+        "should-accept-all": "Devam etmek için tüm koşulları kabul etmelisiniz."
       }
     },
     "en": {
@@ -156,10 +167,13 @@
         "birthdate": "Birthdate",
         "next": "Next",
         "previous": "Back",
+        "accept-and-create": "Accept and Create",
         "is-member": "Have an account?",
         "something-went-wrong": "Something went wrong!",
         "invalid-credentials": "Nickname or password is wrong!",
-        "missing-input": "Please fill in all the fields!"
+        "missing-input": "Please fill in all the fields!",
+        "user-exists": "A user with this nickname already exists!",
+        "should-accept-all": "You need to agree to all terms to continue."
       }
     }
   },

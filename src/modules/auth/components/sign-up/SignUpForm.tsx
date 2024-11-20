@@ -3,17 +3,23 @@ import { Chip, Text, TextInput } from 'react-native-paper';
 import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SignUpForm.styles';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { SceneRendererProps } from 'react-native-tab-view';
 import { DatePickerModal } from 'react-native-paper-dates';
 import { formatDate } from 'date-fns';
 import NicknameInput from '../nickname-input/NicknameInput';
 import PasswordInput from '../password-input/PasswordInput';
 import FormButton from '../form-button/FormButton';
+import { useService } from '../../../../common/services/useService';
+import { checkIfUserExists } from '../../services/checkIfUserExists';
+import Toast from 'react-native-toast-message';
+import { SignUpFormContext } from '../../store/signUpFormContext';
 
 const SignUpForm = (props: SceneRendererProps) => {
   const { t, currentLanguage, dateLocale } = useLocalization();
   const styles = useThemedStyles(createStyles);
+  const { request: requestCheckIfUserExists, loading } = useService(checkIfUserExists);
+  const formData = useContext(SignUpFormContext);
 
   const [gender, setGender] = useState<'male' | 'female'>();
   const [nickname, setNickname] = useState<string>();
@@ -29,8 +35,42 @@ const SignUpForm = (props: SceneRendererProps) => {
   };
 
   const _onPress_Next = () => {
-    // TODO: validate fields
-    props.jumpTo('agreement');
+    // Validate fields
+    if (
+      gender === undefined ||
+      nickname === undefined ||
+      nickname.trim().length === 0 ||
+      email === undefined ||
+      email.trim().length === 0 ||
+      password === undefined ||
+      password.trim().length === 0 ||
+      birthdate === undefined
+    ) {
+      Toast.show({
+        type: 'error',
+        text1: t('missing-input'),
+      });
+      return;
+    }
+    // Check if user already exists
+    requestCheckIfUserExists(
+      { nickname },
+      {
+        onSuccess: (data) => {
+          if (data === true) {
+            // If user does not exist, go to agreement step
+            formData?.setValue?.({
+              birthdate: birthdate.toISOString(),
+              nickname,
+              email,
+              password,
+              gender,
+            });
+            props.jumpTo('agreement');
+          }
+        },
+      }
+    );
   };
 
   const _onPress_SignIn = () => {
@@ -130,6 +170,7 @@ const SignUpForm = (props: SceneRendererProps) => {
         alternateButtonPreTextKey="is-member"
         alternateButtonTextKey="sign-in"
         onPressAlternateButton={_onPress_SignIn}
+        loading={loading}
       />
     </View>
   );

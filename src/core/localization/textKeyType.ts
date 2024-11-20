@@ -17,7 +17,10 @@ export type TextKeys =
   | 'birthdate'
   | 'next'
   | 'previous'
+  | 'accept-and-create'
   | 'is-member'
   | 'something-went-wrong'
   | 'missing-input'
-  | 'invalid-credentials';
+  | 'invalid-credentials'
+  | 'user-exists'
+  | 'should-accept-all';

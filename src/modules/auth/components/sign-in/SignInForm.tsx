@@ -37,22 +37,30 @@ const SignInForm = (props: SceneRendererProps) => {
   };
 
   const _onPress_SignIn = () => {
-    if (nickname !== undefined && password !== undefined) {
-      requestSignIn(
-        {
-          nickname,
-          password,
-        },
-        {
-          onSuccess: _onSignInSuccessful,
-        }
-      );
-    } else {
+    // Validate
+    if (
+      nickname === undefined ||
+      nickname.trim().length === 0 ||
+      password === undefined ||
+      password.trim().length === 0
+    ) {
       Toast.show({
         type: 'error',
         text1: 'Lütfen kullanıcı adı ve şifre alanlarını doldurun.',
       });
+      return;
     }
+
+    // Sign In
+    requestSignIn(
+      {
+        nickname,
+        password,
+      },
+      {
+        onSuccess: _onSignInSuccessful,
+      }
+    );
   };
 
   const _onPress_CreateAccount = () => {
