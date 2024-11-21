@@ -142,7 +142,9 @@
         "invalid-credentials": "Kullanıcı adı veya şifre yanlış",
         "missing-input": "Lütfen tüm alanları doldurun!",
         "user-exists": "Bu kullanıcı adına sahip bir kullanıcı bulunmaktadır!",
-        "should-accept-all": "Devam etmek için tüm koşulları kabul etmelisiniz."
+        "should-accept-all": "Devam etmek için tüm koşulları kabul etmelisiniz.",
+        "hello": "Merhaba",
+        "start-survey": "Ankete başla"
       }
     },
     "en": {
@@ -173,7 +175,9 @@
         "invalid-credentials": "Nickname or password is wrong!",
         "missing-input": "Please fill in all the fields!",
         "user-exists": "A user with this nickname already exists!",
-        "should-accept-all": "You need to agree to all terms to continue."
+        "should-accept-all": "You need to agree to all terms to continue.",
+        "hello": "Hello",
+        "start-survey": "Start a survey"
       }
     }
   },

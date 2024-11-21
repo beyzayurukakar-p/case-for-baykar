@@ -14,6 +14,7 @@ const NicknameInput = (props: { value?: string; onChange: (val: string) => void 
         label={t('nickname')}
         value={props.value}
         onChangeText={props.onChange}
+        autoCapitalize="none"
       />
       <Text
         variant="bodySmall"

@@ -33,6 +33,7 @@ const PasswordInput = (props: {
           />
         }
         secureTextEntry={isPasswordHidden}
+        autoCapitalize="none"
       />
       {props.showForgotPassword ? (
         <TouchableOpacity

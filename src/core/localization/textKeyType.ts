@@ -23,4 +23,6 @@ export type TextKeys =
   | 'missing-input'
   | 'invalid-credentials'
   | 'user-exists'
-  | 'should-accept-all';
+  | 'should-accept-all'
+  | 'hello'
+  | 'start-survey';

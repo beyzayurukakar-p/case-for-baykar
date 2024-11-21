@@ -149,6 +149,7 @@ const SignUpForm = (props: SceneRendererProps) => {
         mode="outlined"
         label={t('email')}
         style={styles.spaceBelow}
+        autoCapitalize="none"
       />
 
       {/* Nickname input */}

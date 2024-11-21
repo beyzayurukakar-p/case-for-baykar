@@ -21,3 +21,4 @@ export const userSlice = createSlice({
 });
 
 export const selectUserExists = (state: RootState) => state.user.user !== null;
+export const selectUser = (state: RootState) => state.user.user;

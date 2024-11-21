@@ -1,2 +1,2 @@
-export { userSlice, selectUserExists } from './slice';
+export { userSlice, selectUserExists, selectUser } from './slice';
 export * from './hooks';
