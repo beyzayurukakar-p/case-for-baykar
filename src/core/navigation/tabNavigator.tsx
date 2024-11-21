@@ -2,51 +2,54 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SurveyListScreen } from '../../modules/surveys';
 import { HomeScreen } from '../../modules/home';
 import { ProfileScreen } from '../../modules/profile';
-import TabBarLabel from './components/TabLabel';
+import TabBarLabel from './components/TabBarLabel';
+import TabBarIcon from './components/TabBarIcon';
+import TabBarBackground from './components/TabBarBackground';
+import { TextKeys } from '../localization';
+
+const getTabBarOptions = (labelKey: TextKeys, iconKey: string) => ({
+  tabBarIcon: ({ focused }: { focused: boolean }) => {
+    return (
+      <TabBarIcon
+        focused={focused}
+        iconKey={iconKey}
+      />
+    );
+  },
+  tabBarLabel: ({ focused }: { focused: boolean }) => {
+    return (
+      <TabBarLabel
+        focused={focused}
+        textKey={labelKey}
+      />
+    );
+  },
+});
 
 export const tabNavigator = createBottomTabNavigator({
   screens: {
     Surveys: {
       screen: SurveyListScreen,
       options: {
-        tabBarLabel: ({ focused }) => {
-          return (
-            <TabBarLabel
-              focused={focused}
-              textKey="surveys-screen-title"
-            />
-          );
-        },
+        ...getTabBarOptions('surveys-screen-title', 'chart-timeline-variant'),
       },
     },
     Home: {
       screen: HomeScreen,
       options: {
-        tabBarLabel: ({ focused }) => {
-          return (
-            <TabBarLabel
-              focused={focused}
-              textKey="home-screen-title"
-            />
-          );
-        },
+        ...getTabBarOptions('home-screen-title', 'home'),
       },
     },
     Profile: {
       screen: ProfileScreen,
       options: {
-        tabBarLabel: ({ focused }) => {
-          return (
-            <TabBarLabel
-              focused={focused}
-              textKey="profile-screen-title"
-            />
-          );
-        },
+        ...getTabBarOptions('profile-screen-title', 'account'),
       },
     },
   },
+  initialRouteName: 'Home',
   screenOptions: {
     headerShown: false,
+    tabBarBackground: TabBarBackground,
   },
 });
