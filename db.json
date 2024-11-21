@@ -6,7 +6,7 @@
       "email": "",
       "gender": "",
       "password": "123",
-      "birthdate": ""
+      "birthdate": "1991-10-20T21:00:00.000Z"
     },
     {
       "id": 2,
@@ -127,9 +127,11 @@
         "password": "Şifre",
         "forgot-password": "Şifremi unuttum",
         "sign-in": "Giriş Yap",
+        "sign-out": "Çıkış Yap",
         "not-member": "Üye değil misiniz?",
         "create-account": "Hesap Oluştur",
         "select-gender": "Cinsiyetinizi seçin",
+        "gender": "Cinsiyet",
         "female": "Kadın",
         "male": "Erkek",
         "email": "E-posta",
@@ -144,7 +146,12 @@
         "user-exists": "Bu kullanıcı adına sahip bir kullanıcı bulunmaktadır!",
         "should-accept-all": "Devam etmek için tüm koşulları kabul etmelisiniz.",
         "hello": "Merhaba",
-        "start-survey": "Ankete başla"
+        "start-survey": "Ankete başla",
+        "account-info": "Hesap Bilgileri",
+        "about": "Hakkımızda",
+        "privacy-policy": "Gizlilik Politikası",
+        "terms-conditions": "Şartlar ve Koşullar",
+        "actions": "İşlemler"
       }
     },
     "en": {
@@ -160,9 +167,11 @@
         "password": "Password",
         "forgot-password": "Forgot password",
         "sign-in": "Sign In",
+        "sign-out": "Sign Out",
         "not-member": "Not a member?",
         "create-account": "Create Account",
         "select-gender": "Select your gender",
+        "gender": "Cinsiyet",
         "female": "Female",
         "male": "Male",
         "email": "E-mail",
@@ -177,7 +186,12 @@
         "user-exists": "A user with this nickname already exists!",
         "should-accept-all": "You need to agree to all terms to continue.",
         "hello": "Hello",
-        "start-survey": "Start a survey"
+        "start-survey": "Start a survey",
+        "account-info": "Account Information",
+        "about": "About",
+        "privacy-policy": "Privacy Policy",
+        "terms-conditions": "Terms and Conditions",
+        "actions": "Actions"
       }
     }
   },

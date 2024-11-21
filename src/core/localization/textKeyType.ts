@@ -8,9 +8,11 @@ export type TextKeys =
   | 'password'
   | 'forgot-password'
   | 'sign-in'
+  | 'sign-out'
   | 'not-member'
   | 'create-account'
   | 'select-gender'
+  | 'gender'
   | 'female'
   | 'male'
   | 'email'
@@ -25,4 +27,9 @@ export type TextKeys =
   | 'user-exists'
   | 'should-accept-all'
   | 'hello'
-  | 'start-survey';
+  | 'start-survey'
+  | 'account-info'
+  | 'about'
+  | 'privacy-policy'
+  | 'terms-conditions'
+  | 'actions';
