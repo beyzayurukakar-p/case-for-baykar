@@ -10,6 +10,7 @@ const CardButton = (props: { buttonText: string; isDanger?: boolean; onPress: ()
     <TouchableOpacity
       style={styles.container}
       activeOpacity={0.4}
+      onPress={props.onPress}
     >
       <View style={styles.contentContainer}>
         <Text

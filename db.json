@@ -151,7 +151,8 @@
         "about": "Hakkımızda",
         "privacy-policy": "Gizlilik Politikası",
         "terms-conditions": "Şartlar ve Koşullar",
-        "actions": "İşlemler"
+        "actions": "İşlemler",
+        "confirm-sign-out": "Çıkış yapmak için tekrar dokunun!"
       }
     },
     "en": {
@@ -191,7 +192,8 @@
         "about": "About",
         "privacy-policy": "Privacy Policy",
         "terms-conditions": "Terms and Conditions",
-        "actions": "Actions"
+        "actions": "Actions",
+        "confirm-sign-out": "Tap again to confirm sign out!"
       }
     }
   },

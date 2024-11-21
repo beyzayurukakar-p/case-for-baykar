@@ -6,16 +6,32 @@ import { createStyles } from './ProfileScreen.styles';
 import dimensions from '../../../common/styling/dimensions';
 import CardUserField from '../components/profile-field/CardUserField';
 import CardButton from '../components/profile-field/CardButton';
-import { useSelector } from 'react-redux';
-import { selectUser } from '../../../core/user';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUser, userSlice } from '../../../core/user';
 import { formatDate } from 'date-fns';
+import { useState } from 'react';
 
 const ProfileScreen = () => {
+  const dispatch = useDispatch();
+
   const { t, currentLanguage, dateLocale } = useLocalization();
   const styles = useThemedStyles(createStyles);
   const theme = useAppTheme();
 
   const user = useSelector(selectUser);
+
+  const [confirmSignout, setConfirmSignout] = useState<boolean>(false);
+
+  const _onPress_SignOut = () => {
+    if (confirmSignout === true) {
+      dispatch(userSlice.actions.setUser(null));
+    } else {
+      setConfirmSignout(true);
+      setTimeout(() => {
+        setConfirmSignout(false);
+      }, 2000);
+    }
+  };
 
   const _renderHeader = () => {
     return (
@@ -63,7 +79,7 @@ const ProfileScreen = () => {
         <CardUserField
           fieldKey="birthdate"
           label={t('birthdate')}
-          value={formatDate(user?.birthdate as string, 'PP', { locale: dateLocale })}
+          value={user?.birthdate ? formatDate(user?.birthdate, 'PP', { locale: dateLocale }) : ''}
         />
         <CardUserField
           fieldKey="gender"
@@ -81,9 +97,9 @@ const ProfileScreen = () => {
         />
         {_renderSubtitle(t('actions'))}
         <CardButton
-          buttonText={t('sign-out')}
+          buttonText={confirmSignout ? t('confirm-sign-out') : t('sign-out')}
           isDanger={true}
-          onPress={() => {}}
+          onPress={_onPress_SignOut}
         />
       </View>
     </SafeAreaView>

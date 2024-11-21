@@ -32,4 +32,5 @@ export type TextKeys =
   | 'about'
   | 'privacy-policy'
   | 'terms-conditions'
-  | 'actions';
+  | 'actions'
+  | 'confirm-sign-out';
