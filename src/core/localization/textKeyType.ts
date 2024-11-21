@@ -33,4 +33,8 @@ export type TextKeys =
   | 'privacy-policy'
   | 'terms-conditions'
   | 'actions'
-  | 'confirm-sign-out';
+  | 'confirm-sign-out'
+  | 'not-started-surveys'
+  | 'ongoing-surveys'
+  | 'start'
+  | 'continue';

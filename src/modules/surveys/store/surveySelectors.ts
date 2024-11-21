@@ -7,11 +7,31 @@ export const surveySelectors = {
     (notStartedSurveysObj) => Object.values(notStartedSurveysObj)
   ),
   ongoingSurveys: createSelector(
+    (state: RootState) => state.survey.surveys,
     (state: RootState) => state.survey.ongoingSurveys,
-    (ongoingSurveysObj) => Object.values(ongoingSurveysObj)
+    (allSurveyObj, ongoingSurveysObj) => {
+      const list = [];
+      for (const surveyId of Object.keys(ongoingSurveysObj)) {
+        list.push({
+          ...ongoingSurveysObj[Number(surveyId)],
+          ...allSurveyObj[Number(surveyId)],
+        });
+      }
+      return list;
+    }
   ),
   completedSurveys: createSelector(
+    (state: RootState) => state.survey.surveys,
     (state: RootState) => state.survey.completedSurveys,
-    (completedSurveysObj) => Object.values(completedSurveysObj)
+    (allSurveyObj, completedSurveysObj) => {
+      const list = [];
+      for (const surveyId of Object.keys(completedSurveysObj)) {
+        list.push({
+          ...completedSurveysObj[Number(surveyId)],
+          ...allSurveyObj[Number(surveyId)],
+        });
+      }
+      return list;
+    }
   ),
 };

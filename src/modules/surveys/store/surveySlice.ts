@@ -2,7 +2,9 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CompletedSurvey, OngoingQuestion, OngoingSurvey, Survey } from '../types/surveyTypes';
 
 type SurveyState = {
-  surveys: Survey[];
+  surveys: {
+    [surveyId: number]: Survey;
+  };
   notStartedSurveys: {
     [surveyId: number]: Survey;
   };
@@ -15,7 +17,7 @@ type SurveyState = {
 };
 
 const INITIAL_STATE: SurveyState = {
-  surveys: [],
+  surveys: {},
   notStartedSurveys: {},
   ongoingSurveys: {},
   completedSurveys: {},
@@ -26,9 +28,10 @@ export const surveySlice = createSlice({
   initialState: INITIAL_STATE,
   reducers: {
     setSurveys: (state, action: PayloadAction<Survey[]>) => {
-      state.surveys = action.payload;
-      // Also find not started surveys
       for (const survey of action.payload) {
+        state.surveys[survey.id] = survey;
+
+        // Also find not started surveys
         if (!state.ongoingSurveys[survey.id] && !state.completedSurveys[survey.id]) {
           state.notStartedSurveys[survey.id] = survey;
         }

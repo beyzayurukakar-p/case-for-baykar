@@ -18,7 +18,7 @@ export const getSurveys = async () => {
     error = 'something-went-wrong';
   }
 
-  await mockDelay(5000);
+  await mockDelay();
 
   if (error) {
     throw error;

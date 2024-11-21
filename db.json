@@ -255,7 +255,11 @@
         "privacy-policy": "Gizlilik Politikası",
         "terms-conditions": "Şartlar ve Koşullar",
         "actions": "İşlemler",
-        "confirm-sign-out": "Çıkış yapmak için tekrar dokunun!"
+        "confirm-sign-out": "Çıkış yapmak için tekrar dokunun!",
+        "not-started-surveys": "Yeni Anketler",
+        "ongoing-surveys": "Devam Eden Anketler",
+        "start": "Başla",
+        "continue": "Devam Et"
       }
     },
     "en": {
@@ -294,7 +298,11 @@
         "privacy-policy": "Privacy Policy",
         "terms-conditions": "Terms and Conditions",
         "actions": "Actions",
-        "confirm-sign-out": "Tap again to confirm sign out!"
+        "confirm-sign-out": "Tap again to confirm sign out!",
+        "not-started-surveys": "New Surveys",
+        "ongoing-surveys": "Ongoing Surveys",
+        "start": "Start",
+        "continue": "Continue"
       }
     }
   }
