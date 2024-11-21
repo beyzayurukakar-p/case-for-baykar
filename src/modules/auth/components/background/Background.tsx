@@ -1,6 +1,6 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
 import { ImageBackground, Keyboard, View } from 'react-native';
-import { imageSources } from '../../assets';
+import { imageSources } from '../../../../common/assets/images';
 import {
   CONTENT_HEIGHT_FOR_KEYBOARD,
   CONTENT_NORMAL_HEIGHT,
