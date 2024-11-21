@@ -1,7 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { tabNavigator } from './tabNavigator';
 import { PrivacyPolicyScreen, TermsConditionsScreen } from '../../modules/profile';
-import { SurveyScreen, SurveyCompletedScreen } from '../../modules/surveys';
+import { SurveyScreen, SurveyCompletedScreen, SurveysToDoListScreen } from '../../modules/surveys';
+import HeaderTitle from './components/HeaderTitle';
 
 export const signedInStack = createStackNavigator({
   screens: {
@@ -10,6 +11,16 @@ export const signedInStack = createStackNavigator({
     TermsConditions: TermsConditionsScreen,
     Survey: SurveyScreen,
     SurveyCompleted: SurveyCompletedScreen,
+    SurveysToDoList: {
+      screen: SurveysToDoListScreen,
+      options: {
+        headerShown: true,
+        headerBackButtonDisplayMode: 'minimal',
+        headerTitle: () => {
+          return <HeaderTitle textKey={'start-survey'} />;
+        },
+      },
+    },
   },
   screenOptions: {
     headerShown: false,

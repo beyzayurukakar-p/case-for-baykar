@@ -3,6 +3,9 @@ import { CompletedSurvey, OngoingQuestion, OngoingSurvey, Survey } from '../type
 
 type SurveyState = {
   surveys: Survey[];
+  notStartedSurveys: {
+    [surveyId: number]: Survey;
+  };
   ongoingSurveys: {
     [surveyId: number]: OngoingSurvey;
   };
@@ -13,16 +16,23 @@ type SurveyState = {
 
 const INITIAL_STATE: SurveyState = {
   surveys: [],
+  notStartedSurveys: {},
   ongoingSurveys: {},
   completedSurveys: {},
 };
 
-createSlice({
+export const surveySlice = createSlice({
   name: 'survey',
   initialState: INITIAL_STATE,
   reducers: {
     setSurveys: (state, action: PayloadAction<Survey[]>) => {
       state.surveys = action.payload;
+      // Also find not started surveys
+      for (const survey of action.payload) {
+        if (!state.ongoingSurveys[survey.id] && !state.completedSurveys[survey.id]) {
+          state.notStartedSurveys[survey.id] = survey;
+        }
+      }
     },
 
     /*
@@ -41,7 +51,8 @@ createSlice({
 
       /*
       If this is the first time the user views this survey,
-      create an ongoing survey instance and set duration to 0
+      1. Create an ongoing survey instance and set duration to 0.
+      2. Remove the survey from not started surveys
       */
       if (!state.ongoingSurveys[surveyId]) {
         state.ongoingSurveys[surveyId] = {
@@ -53,6 +64,7 @@ createSlice({
             duration: 0,
           },
         };
+        delete state.notStartedSurveys[surveyId];
         return;
       }
 

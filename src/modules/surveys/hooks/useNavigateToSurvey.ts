@@ -6,7 +6,7 @@ export const useNavigateToSurvey = () => {
 
   const navigateToSurvey = useCallback(() => {
     nav.navigate('SignedIn', {
-      screen: 'Survey',
+      screen: 'SurveysToDoList',
     });
   }, [nav]);
 

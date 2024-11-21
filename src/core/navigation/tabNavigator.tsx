@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SurveyListScreen } from '../../modules/surveys';
+import { CompletedSurveyListScreen } from '../../modules/surveys';
 import { HomeScreen } from '../../modules/home';
 import { ProfileScreen } from '../../modules/profile';
 import TabBarLabel from './components/TabBarLabel';
@@ -29,7 +29,7 @@ const getTabBarOptions = (labelKey: TextKeys, iconKey: string) => ({
 export const tabNavigator = createBottomTabNavigator({
   screens: {
     Surveys: {
-      screen: SurveyListScreen,
+      screen: CompletedSurveyListScreen,
       options: {
         ...getTabBarOptions('surveys-screen-title', 'chart-timeline-variant'),
       },
