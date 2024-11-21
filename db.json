@@ -32,82 +32,187 @@
       "questions": [
         {
           "id": 1,
-          "order": 0,
-          "type": "select-one",
-          "questionText": "how-do-you-feel-today",
-          "resultLabel": "your-mode-is",
+          "order": 1,
+          "type": "single-choice",
+          "image": "https://cdn.pixabay.com/photo/2024/02/09/00/02/ai-generated-8562015_960_720.jpg",
+          "text": "Şu anki ruh halini en iyi hangi kelime tanımlıyor?",
           "responseData": {
             "options": [
               {
-                "id": 1,
-                "label": "very-good",
-                "order": 0
+                "order": 1,
+                "label": "Mutlu",
+                "value": 5,
+                "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTcM7j0SuWkvCH9L39L2xCzBZIaqTHMbhhDqQ&s"
               },
               {
-                "id": 2,
-                "label": "good",
-                "order": 1
-              },
-              {
-                "id": 3,
-                "label": "average",
-                "order": 2
-              },
-              {
-                "id": 4,
-                "label": "bad",
-                "order": 3
-              },
-              {
-                "id": 5,
-                "label": "very-bad",
-                "order": 4
-              }
-            ],
-            "colorizeOptions": "by-order"
-          }
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "title": "your-mode",
-      "questions": [
-        {
-          "id": 1,
-          "order": 0,
-          "type": "select-one",
-          "questionText": "how-do-you-feel-today",
-          "resultLabel": "your-mode-is",
-          "responseData": {
-            "options": [
-              {
-                "label": "very-good",
-                "value": 4,
-                "order": 0
-              },
-              {
-                "label": "good",
-                "value": 3,
-                "order": 1
-              },
-              {
-                "label": "average",
-                "value": 2,
-                "order": 2
-              },
-              {
-                "label": "bad",
+                "order": 2,
+                "label": "Mutsuz",
                 "value": 1,
-                "order": 3
+                "image": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fneural.love%2Fai-art-generator%2F1ed71100-3ff3-67c8-99f4-971427e6357f%2Fsad-man-sitting-a-dark-room-thinking&psig=AOvVaw3hoSHulYTr3xWCfzWmMcBJ&ust=1732291857996000&source=images&cd=vfe&opi=89978449&ved=0CBQQjRxqFwoTCNjShKTo7YkDFQAAAAAdAAAAABAE"
               },
               {
-                "label": "very-bad",
-                "value": 0,
-                "order": 4
+                "order": 3,
+                "label": "Normal",
+                "value": 3,
+                "image": "https://t4.ftcdn.net/jpg/05/95/54/59/360_F_595545902_EbcJu3vTGJumx9SUybRXoRB6ZIsiAI4w.jpg"
+              },
+              {
+                "order": 5,
+                "label": "Gururlu",
+                "value": 4,
+                "image": "https://img.freepik.com/premium-vector/proud-person-vector-illustration-flat-2_764382-104247.jpg"
+              },
+              {
+                "order": 4,
+                "label": "Gergin",
+                "value": 2,
+                "image": "https://t4.ftcdn.net/jpg/03/15/06/43/360_F_315064372_airpuxfLyMTVt7LoalcnNGivniYQHRlh.jpg"
+              },
+              {
+                "order": 6,
+                "label": "Aşırı mutlu",
+                "value": 6,
+                "image": "https://img.freepik.com/premium-photo/euphoric-jump-vibrant-watercolor-splash-joyful-person-midair-white-background_762139-23034.jpg"
               }
-            ],
-            "colorizeOptions": "by-order"
+            ]
+          }
+        },
+        {
+          "id": 2,
+          "order": 2,
+          "type": "multi-choice",
+          "text": "Bugünkü seni hangi kelimeler tanımlıyor?",
+          "responseData": {
+            "options": [
+              {
+                "order": 1,
+                "label": "Eğlenceli",
+                "value": 5
+              },
+              {
+                "order": 2,
+                "label": "Her zamanki gibi",
+                "value": 1
+              },
+              {
+                "order": 3,
+                "label": "Yorgun",
+                "value": 3
+              },
+              {
+                "order": 4,
+                "label": "Enerjik",
+                "value": 4
+              },
+              {
+                "order": 5,
+                "label": "Meraklı",
+                "value": 2
+              },
+              {
+                "order": 6,
+                "label": "Havalı",
+                "value": 6
+              },
+              {
+                "order": 6,
+                "label": "Dertli",
+                "value": 6
+              }
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "order": 3,
+          "type": "rating",
+          "text": "Sabah uyandığındaki ruh halin nasıldı?",
+          "responseData": {
+            "options": [
+              {
+                "order": 1,
+                "label": "very-good",
+                "value": 4
+              },
+              {
+                "order": 2,
+                "label": "good",
+                "value": 3
+              },
+              {
+                "order": 3,
+                "label": "average",
+                "value": 2
+              },
+              {
+                "order": 4,
+                "label": "bad",
+                "value": 1
+              },
+              {
+                "order": 5,
+                "label": "very-bad",
+                "value": 0
+              }
+            ]
+          }
+        },
+        {
+          "id": 3,
+          "order": 3,
+          "type": "slider",
+          "text": "Bugüne kaç puan verirsin?",
+          "responseData": {
+            "min": 0,
+            "max": 100,
+            "step": 10
+          }
+        },
+        {
+          "id": 4,
+          "order": 4,
+          "type": "yes-no",
+          "text": "Sence bugün dünden daha iyi bir gün mü?",
+          "responseData": {
+            "yesLabel": "Evet",
+            "yesValue": 1,
+            "noLabel": "Hayır",
+            "noValue": 0
+          }
+        },
+        {
+          "id": 4,
+          "order": 4,
+          "type": "likert",
+          "text": "Şu cümleye ne kadar katılıyorsun: Bugünü tekrar yaşamak isterdim.",
+          "responseData": {
+            "options": [
+              {
+                "order": 1,
+                "label": "Kesinlikle katılıyorum",
+                "value": 5
+              },
+              {
+                "order": 2,
+                "label": "Katılıyorum",
+                "value": 4
+              },
+              {
+                "order": 3,
+                "label": "Kararsızım",
+                "value": 3
+              },
+              {
+                "order": 4,
+                "label": "Katılmıyorum",
+                "value": 2
+              },
+              {
+                "order": 5,
+                "label": "Kesinlikle katılmıyorum",
+                "value": 1
+              }
+            ]
           }
         }
       ]
@@ -116,8 +221,6 @@
   "translations": {
     "tr": {
       "translation": {
-        "your-mode-today": "Bugünkü Modunuz Nasıl?",
-        "how-do-you-feel-today": "Bugün kendinizi nasıl hissediyorsunuz?",
         "home-screen-title": "Anasayfa",
         "surveys-screen-title": "Anketler",
         "profile-screen-title": "Profil",
@@ -157,8 +260,6 @@
     },
     "en": {
       "translation": {
-        "your-mode-today": "How is Your Mode Today?",
-        "how-do-you-feel-today": "How do you feel today?",
         "home-screen-title": "Home",
         "surveys-screen-title": "Surveys",
         "profile-screen-title": "Profile",
