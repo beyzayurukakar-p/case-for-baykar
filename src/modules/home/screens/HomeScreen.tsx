@@ -7,6 +7,7 @@ import { Button, Text } from 'react-native-paper';
 import { useLocalization } from '../../../core/localization';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../core/user';
+import { useNavigateToSurvey } from '../../surveys';
 
 const HomeScreen = () => {
   const styles = useThemedStyles(createStyles);
@@ -14,6 +15,7 @@ const HomeScreen = () => {
   const { t } = useLocalization();
 
   const user = useSelector(selectUser);
+  const navigateToSurvey = useNavigateToSurvey();
 
   return (
     <ImageBackground
@@ -34,6 +36,7 @@ const HomeScreen = () => {
           <Button
             mode="contained"
             contentStyle={styles.startSurveyButtonContent}
+            onPress={navigateToSurvey}
           >
             {t('start-survey')}
           </Button>

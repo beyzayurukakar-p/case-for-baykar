@@ -6,7 +6,8 @@ export type QuestionType =
   | 'rating'
   | 'slider'
   | 'yes-no'
-  | 'likert';
+  | 'likert'
+  | 'open-ended';
 
 export type Question = {
   id: number;

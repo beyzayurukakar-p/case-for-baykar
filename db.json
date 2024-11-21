@@ -297,13 +297,5 @@
         "confirm-sign-out": "Tap again to confirm sign out!"
       }
     }
-  },
-  "userPreferences": [
-    {
-      "id": 1,
-      "userId": 1,
-      "theme": "light",
-      "locale": "en"
-    }
-  ]
+  }
 }

@@ -47,10 +47,13 @@ export type LikertResponseData = {
   options: LikertOption[];
 };
 
+export type OpenEndedResponseData = {};
+
 export type ResponseData =
   | SingleChoiceResponseData
   | MultipleChoiceResponseData
   | RatingResponseData
   | SliderResponseData
   | YesNoResponseData
-  | LikertResponseData;
+  | LikertResponseData
+  | OpenEndedResponseData;

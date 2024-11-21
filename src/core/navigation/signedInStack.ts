@@ -1,14 +1,14 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { tabNavigator } from './tabNavigator';
 import { PrivacyPolicyScreen, TermsConditionsScreen } from '../../modules/profile';
-import { QuestionScreen, SurveyCompletedScreen } from '../../modules/surveys';
+import { SurveyScreen, SurveyCompletedScreen } from '../../modules/surveys';
 
 export const signedInStack = createStackNavigator({
   screens: {
     Tabs: tabNavigator,
     PrivacyPolicy: PrivacyPolicyScreen,
     TermsConditions: TermsConditionsScreen,
-    QuestionScreen: QuestionScreen,
+    Survey: SurveyScreen,
     SurveyCompleted: SurveyCompletedScreen,
   },
   screenOptions: {
