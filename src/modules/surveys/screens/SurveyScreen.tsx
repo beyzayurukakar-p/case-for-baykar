@@ -34,6 +34,10 @@ const SurveyScreen = (
 
   // Handlers
   const _onPressHome = () => {
+    /*
+    When user leaves this screen,
+    notify the store that the survey is paused
+     */
     dispatch(
       surveySlice.actions.pauseSurvey({
         surveyId: survey.id,
