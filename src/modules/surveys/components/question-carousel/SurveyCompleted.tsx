@@ -5,11 +5,9 @@ import { createStyles } from './SurveyCompleted.styles';
 import BottomButtons from './BottomButtons';
 import { useLocalization } from '../../../../core/localization';
 
-const SurveyCompleted = (props: { surveyId: number; onPressBack: () => void }) => {
+const SurveyCompleted = (props: { onPressBack: () => void; onPressEndSurvey: () => void }) => {
   const styles = useThemedStyles(createStyles);
   const { t } = useLocalization();
-
-  const _onPressEndSurvey = () => {};
 
   return (
     <View style={styles.container}>
@@ -31,7 +29,7 @@ const SurveyCompleted = (props: { surveyId: number; onPressBack: () => void }) =
         leftButtonDisabled={false}
         rightButtonDisabled={false}
         onPressLeftButton={props.onPressBack}
-        onPressRightButton={_onPressEndSurvey}
+        onPressRightButton={props.onPressEndSurvey}
         rightButtonText="end-survey"
       />
     </View>

@@ -3,9 +3,13 @@ import { RootState } from '../../../core/store';
 import { OngoingSurvey, Survey } from '../types/surveyTypes';
 import { compareByOrderFn } from '../utils/sortByOrder';
 
+const allSurveys = createSelector(
+  (state: RootState) => state.survey.surveys,
+  (surveysObj) => Object.values(surveysObj)
+);
+
 const notStartedSurveys = createSelector(
   (state: RootState) => state.survey.notStartedSurveys,
-  (deneme: string) => deneme,
   (notStartedSurveysObj) => Object.values(notStartedSurveysObj)
 );
 
@@ -78,13 +82,14 @@ const responseOfQuestion = createSelector(
   (ongoingSurveysObj, surveyId, questionId) => {
     const ongoingSurvey: OngoingSurvey | undefined = ongoingSurveysObj[surveyId];
     const responses = ongoingSurvey?.responses;
-    const response = responses[questionId];
+    const response = responses?.[questionId];
     return response?.response;
   }
 );
 
 export const surveySelectors = {
   // Lists
+  allSurveys,
   notStartedSurveys,
   ongoingSurveys,
   completedSurveys,

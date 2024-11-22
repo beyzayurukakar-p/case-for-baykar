@@ -43,4 +43,11 @@ export type TextKeys =
   | 'end-survey'
   | 'survey-complete'
   | 'view-survey-result'
-  | 'go-back-or-view-results';
+  | 'go-back-or-view-results'
+  | 'nothing-to-show-here'
+  | 'waiting-for-results'
+  | 'date-completed'
+  | 'total-survey-duration'
+  | 'result'
+  | 'your-responses'
+  | 'your-response';

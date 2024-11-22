@@ -12,20 +12,23 @@ export type OngoingQuestion = {
   duration: number;
 };
 
+export type GivenResponse = {
+  response: any;
+  duration: number;
+};
+
 export type OngoingSurvey = {
   id: number;
   ongoingQuestion?: OngoingQuestion;
   responses: {
-    [questionId: number]: {
-      response: any;
-      duration: number;
-    };
+    [questionId: number]: GivenResponse;
   };
   surveyDuration: number;
   lastUpdatedOn?: string;
 };
 
-export type CompletedSurvey = Omit<OngoingSurvey, 'lastUpdatedOn'> & {
-  result: number;
-  completedOn: string;
-};
+export type CompletedSurvey = Survey &
+  Omit<OngoingSurvey, 'lastUpdatedOn'> & {
+    result: number;
+    completedOn: string;
+  };

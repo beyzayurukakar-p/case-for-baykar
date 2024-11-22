@@ -12,6 +12,7 @@ import dimensions from '../../../common/styling/dimensions';
 import { Survey } from '../types/surveyTypes';
 import { TextKeys, useLocalization } from '../../../core/localization';
 import SurveyItem from '../components/survey-item/SurveyItem';
+import FullscreenMessage from '../components/fullscreen-message/FullscreenMessage';
 
 type SectionItem = {
   name: 'not-started' | 'ongoing';
@@ -27,20 +28,21 @@ const SurveysToDoListScreen = () => {
 
   const { loading, request } = useService(getSurveys);
 
+  const allSurveys = useSelector(surveySelectors.allSurveys);
   const notStartedSurveys = useSelector(surveySelectors.notStartedSurveys);
   const ongoingSurveys = useSelector(surveySelectors.ongoingSurveys);
 
   useEffect(() => {
-    if (notStartedSurveys.length === 0 && ongoingSurveys.length === 0) {
+    if (allSurveys.length === 0) {
       request(undefined, {
-        onSuccess: (allSurveys) => {
-          if (allSurveys) {
-            dispatch(surveySlice.actions.setSurveys(allSurveys));
+        onSuccess: (_allSurveys) => {
+          if (_allSurveys) {
+            dispatch(surveySlice.actions.setSurveys(_allSurveys));
           }
         },
       });
     }
-  }, [notStartedSurveys, ongoingSurveys, dispatch, request]);
+  }, [allSurveys, dispatch, request]);
 
   const sectionsData: SectionItem[] = useMemo(() => {
     return [
@@ -77,6 +79,10 @@ const SurveysToDoListScreen = () => {
     return <SurveyItem item={surveyItem} />;
   };
 
+  if (notStartedSurveys.length === 0 && ongoingSurveys.length === 0) {
+    return <FullscreenMessage />;
+  }
+
   return (
     <SectionList
       style={styles.list}
@@ -84,6 +90,7 @@ const SurveysToDoListScreen = () => {
       keyExtractor={(item) => item.id.toString()}
       renderItem={_renderItem}
       renderSectionHeader={_renderSectionHeader}
+      ListEmptyComponent={FullscreenMessage}
     />
   );
 };

@@ -180,7 +180,7 @@ export const surveySlice = createSlice({
       */
       state.ongoingSurveys[surveyId].surveyDuration = duration;
     },
-    completeSurvey: (
+    endSurvey: (
       state,
       action: PayloadAction<{ surveyId: number; duration: number; date: string }>
     ) => {
@@ -197,16 +197,18 @@ export const surveySlice = createSlice({
       /* Calculate result */
       let result = 0;
       for (const response of Object.values(ongoingSurvey.responses)) {
-        if (typeof response === 'number') {
-          result += response;
+        if (!isNaN(Number(response.response))) {
+          result += Number(response.response);
         }
       }
 
       /* Add to completed surveys */
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const { lastUpdatedOn: _, ...rest } = ongoingSurvey;
+      const originalSurvey = state.surveys[surveyId];
       state.completedSurveys[surveyId] = {
         ...rest,
+        ...originalSurvey,
         result,
         completedOn: date,
       };

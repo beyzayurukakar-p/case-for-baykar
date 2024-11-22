@@ -11,15 +11,23 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 export type SurveyHeaderRef = { getDuration: () => number; pause: () => void; resume: () => void };
 type SurveyHeaderProps = {
   surveyTitle: string;
-  questionCount: number;
-  currentStep: number;
+  questionCount?: number;
+  currentStep?: number;
   startDurationFrom?: number;
   onPressHome: () => void;
+  initiallyPaused?: boolean;
 };
 
 const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
   (props: SurveyHeaderProps, ref) => {
-    const { surveyTitle, questionCount, currentStep, startDurationFrom } = props;
+    const {
+      surveyTitle,
+      questionCount,
+      currentStep,
+      startDurationFrom,
+      onPressHome,
+      initiallyPaused,
+    } = props;
 
     const styles = useThemedStyles(createStyles);
     const theme = useAppTheme();
@@ -27,12 +35,14 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
 
     const [durationMs, setDurationMs] = useState<number>(startDurationFrom || 0);
     const durationObj = intervalToDuration({ start: 0, end: durationMs });
-    const [paused, setPaused] = useState<boolean>(false);
+    const [paused, setPaused] = useState<boolean>(
+      initiallyPaused !== undefined ? initiallyPaused : false
+    );
 
     useEffect(() => {
       // Setting up timer
+      if (paused) return;
       const id = setInterval(() => {
-        if (paused) return;
         setDurationMs((prev) => prev + 1000);
       }, 1000);
       return () => {
@@ -75,6 +85,9 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
     };
 
     const _renderProgress = () => {
+      if (currentStep === undefined || questionCount === undefined) {
+        return null;
+      }
       return (
         <View style={styles.progressContainer}>
           <View style={styles.progressBarContainer}>
@@ -105,7 +118,7 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
             icon={'home'}
             mode="contained"
             containerColor={theme.colors.onPrimary}
-            onPress={props.onPressHome}
+            onPress={onPressHome}
           />
           {_renderTimer()}
         </View>

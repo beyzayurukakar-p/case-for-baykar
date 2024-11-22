@@ -27,6 +27,23 @@
   ],
   "surveys": [
     {
+      "id": 2,
+      "title": "The Perfect Survey",
+      "questions": [
+        {
+          "id": 4,
+          "order": 4,
+          "type": "slider",
+          "text": "Bugüne kaç puan verirsin?",
+          "responseData": {
+            "min": 0,
+            "max": 100,
+            "step": 5
+          }
+        }
+      ]
+    },
+    {
       "id": 1,
       "title": "your-mode",
       "questions": [
@@ -232,7 +249,14 @@
         "end-survey": "Bitir",
         "survey-complete": "Anket Tamamlandı!",
         "go-back-or-view-results": "İster geri gidip yanıtlarınızı düzenleyebilir, isterseniz de bitirip sonuçları görüntüleyebilirsiniz.",
-        "view-survey-result": "Sonuçları görüntüleyin"
+        "view-survey-result": "Sonuçları görüntüleyin",
+        "nothing-to-show-here": "Burada gösterilecek bir şey bulunmuyor.",
+        "waiting-for-results": "Sonuçlar bekleniyor",
+        "date-completed": "Tamamladığınız Tarih",
+        "total-survey-duration": "Toplam Süre",
+        "result": "Sonuç",
+        "your-responses": "Yanıtlarınız",
+        "your-response": "Yanıtınız"
       }
     },
     "en": {
@@ -281,7 +305,14 @@
         "end-survey": "End Survey",
         "survey-complete": "Survey is Complete!",
         "go-back-or-view-results": "You can go back to edit your responses or you can end the survey to view the results.",
-        "view-survey-result": "View results"
+        "view-survey-result": "View results",
+        "nothing-to-show-here": "There is nothing to show here.",
+        "waiting-for-results": "Waiting for results",
+        "date-completed": "Date of Completion",
+        "total-survey-duration": "Total Duration",
+        "result": "Result",
+        "your-responses": "Your Responses",
+        "your-response": "Your Response"
       }
     }
   }

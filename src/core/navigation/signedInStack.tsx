@@ -1,7 +1,11 @@
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { tabNavigator } from './tabNavigator';
 import { PrivacyPolicyScreen, TermsConditionsScreen } from '../../modules/profile';
-import { SurveyScreen, SurveysToDoListScreen } from '../../modules/surveys';
+import {
+  CompletedSurveyDetailScreen,
+  SurveyScreen,
+  SurveysToDoListScreen,
+} from '../../modules/surveys';
 import HeaderTitle from './components/HeaderTitle';
 import { StaticParamList } from '@react-navigation/native';
 
@@ -26,6 +30,7 @@ export const signedInStack = createStackNavigator({
         },
       },
     },
+    CompletedSurveyDetail: CompletedSurveyDetailScreen,
   },
   screenOptions: {
     headerShown: false,

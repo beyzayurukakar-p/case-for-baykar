@@ -10,6 +10,8 @@ import { View } from 'react-native';
 import SurveyCompleted from './SurveyCompleted';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './QuestionCarousel.styles';
+import { useNavigation } from '@react-navigation/native';
+import { ScreenNavigationProp } from '../../../../core/navigation/signedInStack';
 
 const isQuestionAnswered = (questionId: number, ongoingSurvey?: OngoingSurvey) => {
   return ongoingSurvey?.responses[questionId] !== undefined;
@@ -24,6 +26,7 @@ const QuestionCarousel = (props: {
 
   const dispatch = useDispatch();
   const styles = useThemedStyles(createStyles);
+  const nav = useNavigation<ScreenNavigationProp<'Survey'>>();
 
   const carouselRef = useRef<ICarouselInstance>(null);
 
@@ -62,6 +65,7 @@ const QuestionCarousel = (props: {
     );
   }, [dispatch, timerRef, survey.id, currentIndex]);
 
+  // Handlers
   const _onPressAnswer = useCallback(
     (index: number, response: any) => {
       // Notify store that an answer is given to a question
@@ -95,6 +99,23 @@ const QuestionCarousel = (props: {
     timerRef.current?.resume();
   };
 
+  const _onPressEndSurvey = () => {
+    nav.replace('CompletedSurveyDetail', {
+      surveyId: survey.id,
+      waitForResults: true,
+    });
+
+    setTimeout(() => {
+      dispatch(
+        surveySlice.actions.endSurvey({
+          surveyId: survey.id,
+          date: new Date().toISOString(),
+          duration: timerRef.current?.getDuration() || 0,
+        })
+      );
+    }, 500);
+  };
+
   const _renderQuestionItem: CarouselRenderItem<(typeof survey)['questions'][0]> = useCallback(
     ({ item: question, index }) => {
       return (
@@ -126,8 +147,8 @@ const QuestionCarousel = (props: {
       {showSurveyCompleted ? (
         <View style={styles.surveyCompletedContainer}>
           <SurveyCompleted
-            surveyId={survey.id}
             onPressBack={_onPressBackToQuestions}
+            onPressEndSurvey={_onPressEndSurvey}
           />
         </View>
       ) : null}
