@@ -1,6 +1,6 @@
 import { RadioButton } from 'react-native-paper';
 import { SingleChoiceResponseData } from '../../types/responseTypes';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 import { useMemo } from 'react';
 import { compareByOrderFn } from '../../utils/sortByOrder';
 import { useThemedStyles } from '../../../../core/colorScheme';
@@ -22,28 +22,34 @@ const SingleChoiceResponse = (props: {
   }, [responseData]);
 
   return (
-    <RadioButton.Group
-      value={response}
-      onValueChange={onResponseSubmitted}
+    <ScrollView
+      style={styles.container}
+      bounces={false}
+      showsVerticalScrollIndicator={false}
     >
-      {options.map((item) => {
-        return (
-          <View
-            key={item.value}
-            style={styles.choiceContainer}
-          >
-            <RadioButton.Item
-              mode="android"
-              label={t(item.label as TextKeys)}
-              value={item.value}
-              position="leading"
-              labelStyle={styles.labelStyle}
-              labelVariant="titleMedium"
-            />
-          </View>
-        );
-      })}
-    </RadioButton.Group>
+      <RadioButton.Group
+        value={response}
+        onValueChange={onResponseSubmitted}
+      >
+        {options.map((item) => {
+          return (
+            <View
+              key={item.value}
+              style={styles.choiceContainer}
+            >
+              <RadioButton.Item
+                mode="android"
+                label={t(item.label as TextKeys)}
+                value={item.value}
+                position="leading"
+                labelStyle={styles.labelStyle}
+                labelVariant="titleMedium"
+              />
+            </View>
+          );
+        })}
+      </RadioButton.Group>
+    </ScrollView>
   );
 };
 

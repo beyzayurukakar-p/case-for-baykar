@@ -4,7 +4,9 @@ import dimensions from '../../../../common/styling/dimensions';
 
 export const createStyles = ({ colors: _colors }: CreateStylesParams) =>
   StyleSheet.create({
-    container: {},
+    container: {
+      flex: 1,
+    },
     choiceContainer: {
       flexDirection: 'row',
     },

@@ -103,6 +103,7 @@ const QuestionCarousel = (props: {
       data={survey.questions}
       renderItem={_renderQuestionItem}
       width={dimensions.width}
+      enabled={false}
     />
   );
 };

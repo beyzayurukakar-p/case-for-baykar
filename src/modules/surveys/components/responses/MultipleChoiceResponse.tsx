@@ -5,7 +5,7 @@ import { createStyles } from './MultipleChoiceResponse.styles';
 import { TextKeys, useLocalization } from '../../../../core/localization';
 import { useMemo } from 'react';
 import { compareByOrderFn } from '../../utils/sortByOrder';
-import { View } from 'react-native';
+import { ScrollView, View } from 'react-native';
 
 const MultipleChoiceResponse = (props: {
   responseData: MultipleChoiceResponseData;
@@ -34,7 +34,11 @@ const MultipleChoiceResponse = (props: {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView
+      style={styles.container}
+      bounces={false}
+      showsVerticalScrollIndicator={false}
+    >
       {options.map((item) => (
         <View style={styles.choiceContainer}>
           <Checkbox.Item
@@ -49,7 +53,7 @@ const MultipleChoiceResponse = (props: {
           />
         </View>
       ))}
-    </View>
+    </ScrollView>
   );
 };
 

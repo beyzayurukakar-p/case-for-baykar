@@ -5,10 +5,7 @@ import dimensions from '../../../../common/styling/dimensions';
 export const createStyles = ({ colors: _colors }: CreateStylesParams) =>
   StyleSheet.create({
     container: {
-      flexGrow: 1,
-      flexDirection: 'row',
-      flexWrap: 'wrap',
-      columnGap: dimensions.measure(10),
+      flex: 1,
     },
     choiceContainer: {
       flexDirection: 'row',
