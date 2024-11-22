@@ -40,9 +40,11 @@ const MultipleChoiceResponse = (props: {
       showsVerticalScrollIndicator={false}
     >
       {options.map((item) => (
-        <View style={styles.choiceContainer}>
+        <View
+          key={item.value + item.order.toString()}
+          style={styles.choiceContainer}
+        >
           <Checkbox.Item
-            key={item.value + item.order.toString()}
             label={t(item.label as TextKeys)}
             status={response?.includes(item.value) ? 'checked' : 'unchecked'}
             onPress={() => _onPress(item.value)}

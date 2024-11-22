@@ -30,6 +30,7 @@ const RatingResponse = (props: {
       <View style={styles.optionsContainer}>
         {options.map((item) => (
           <TouchableOpacity
+            key={item.value}
             style={[
               styles.choiceTouchable,
               response === item.value ? { borderColor: item.color } : null,

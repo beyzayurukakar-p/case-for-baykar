@@ -38,4 +38,8 @@ export type TextKeys =
   | 'ongoing-surveys'
   | 'start'
   | 'continue'
-  | 'next-question';
+  | 'next-question'
+  | 'ok'
+  | 'end-survey'
+  | 'survey-complete'
+  | 'view-survey-result';

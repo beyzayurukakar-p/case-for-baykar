@@ -10,7 +10,7 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     topContainer: {
       flexDirection: 'row',
       justifyContent: 'space-between',
-      alignItems: 'center',
+      columnGap: dimensions.measure(20),
     },
     bottomContainer: {
       flexDirection: 'row',
@@ -19,16 +19,16 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     },
     surveyTitleText: {
       color: colors.onSurface,
+      flexShrink: 1,
+      flexGrow: 1,
     },
     dateTimeText: {
       marginHorizontal: dimensions.measure(5),
     },
     buttonContent: {
-      backgroundColor: colors.inversePrimary,
       height: dimensions.measure(30),
     },
     buttonLabel: {
-      color: colors.onPrimary,
       marginVertical: 0,
     },
   });

@@ -31,7 +31,6 @@ const QuestionItem = (props: {
     props.onResponseSubmitted(newValue);
   };
 
-  console.log(props.question.text, props.nextDisabled);
   return (
     <View style={styles.container}>
       <Text
@@ -52,31 +51,24 @@ const QuestionItem = (props: {
           mode="contained"
           disabled={props.previousDisabled}
           onPress={props.onPressPrevious}
-          theme={{
-            colors: {
-              surfaceDisabled: theme.colors.primaryContainer,
-              onSurfaceDisabled: theme.colors.onPrimaryContainer,
-            },
-          }}
+          contentStyle={[styles.button, props.previousDisabled ? styles.buttonDisabled : null]}
         >
           <Icon
             source={'arrow-left'}
             size={dimensions.measure(20)}
-            color={props.previousDisabled ? theme.colors.primary : theme.colors.onPrimary}
+            color={props.previousDisabled ? theme.colors.inversePrimary2 : theme.colors.onPrimary}
           />
         </Button>
         <Button
           mode="contained"
           disabled={props.nextDisabled}
           onPress={props.onPressNext}
-          theme={{
-            colors: {
-              primary: theme.colors.primary,
-              onPrimary: theme.colors.onPrimary,
-              surfaceDisabled: theme.colors.surfaceDisabled,
-              onSurfaceDisabled: theme.colors.onSurfaceDisabled,
-            },
-          }}
+          contentStyle={[
+            styles.nextButton,
+            styles.button,
+            props.nextDisabled ? styles.buttonDisabled : null,
+          ]}
+          labelStyle={props.nextDisabled ? styles.labelDisabled : null}
         >
           {t('next-question')}
         </Button>

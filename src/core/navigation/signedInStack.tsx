@@ -10,7 +10,12 @@ export const signedInStack = createStackNavigator({
     Tabs: tabNavigator,
     PrivacyPolicy: PrivacyPolicyScreen,
     TermsConditions: TermsConditionsScreen,
-    Survey: SurveyScreen,
+    Survey: {
+      screen: SurveyScreen,
+      options: {
+        gestureEnabled: false,
+      },
+    },
     SurveyCompleted: SurveyCompletedScreen,
     SurveysToDoList: {
       screen: SurveysToDoListScreen,

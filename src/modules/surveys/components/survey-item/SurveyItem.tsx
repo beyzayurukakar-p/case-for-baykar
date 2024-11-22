@@ -3,15 +3,17 @@ import { createStyles } from './SurveyItem.styles';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { OngoingSurvey, Survey } from '../../types/surveyTypes';
-import { useLocalization } from '../../../../core/localization';
+import { TextKeys, useLocalization } from '../../../../core/localization';
 import { useAppTheme, useThemedStyles } from '../../../../core/colorScheme';
 import dimensions from '../../../../common/styling/dimensions';
 import Card from '../../../../common/components/card/Card';
+import { formatDate, intervalToDuration } from 'date-fns';
+import { formatDuration } from '../../utils/timerUtils';
 
 const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
   const { item } = props;
 
-  const { t } = useLocalization();
+  const { t, dateLocale } = useLocalization();
   const styles = useThemedStyles(createStyles);
   const theme = useAppTheme();
   const nav = useNavigation();
@@ -43,7 +45,7 @@ const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
           variant="bodySmall"
           style={styles.dateTimeText}
         >
-          {'01.10.2021'}
+          {item.lastUpdatedOn ? formatDate(item.lastUpdatedOn, 'PP', { locale: dateLocale }) : '-'}
         </Text>
         <Icon
           source={'clock-edit-outline'}
@@ -54,7 +56,9 @@ const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
           variant="bodySmall"
           style={styles.dateTimeText}
         >
-          {'07:20'}
+          {item.surveyDuration
+            ? formatDuration(intervalToDuration({ start: 0, end: item.surveyDuration }))
+            : '-'}
         </Text>
       </View>
     );
@@ -65,13 +69,14 @@ const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
       <View style={styles.container}>
         <View style={styles.topContainer}>
           <Text
-            variant="labelLarge"
+            variant="titleMedium"
             style={styles.surveyTitleText}
+            numberOfLines={1}
           >
-            {item.title}
+            {t(item.title as TextKeys)}
           </Text>
           <Button
-            mode={'contained-tonal'}
+            mode={'outlined'}
             onPress={_onPress_StartContinue}
             contentStyle={styles.buttonContent}
             labelStyle={styles.buttonLabel}
