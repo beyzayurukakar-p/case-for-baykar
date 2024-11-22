@@ -80,7 +80,7 @@
         {
           "id": 2,
           "order": 2,
-          "type": "multi-choice",
+          "type": "multiple-choice",
           "text": "Bugünkü seni hangi kelimeler tanımlıyor?",
           "responseData": {
             "options": [
@@ -159,7 +159,7 @@
         },
         {
           "id": 4,
-          "order": 3,
+          "order": 4,
           "type": "slider",
           "text": "Bugüne kaç puan verirsin?",
           "responseData": {
@@ -170,7 +170,7 @@
         },
         {
           "id": 5,
-          "order": 4,
+          "order": 5,
           "type": "yes-no",
           "text": "Sence bugün dünden daha iyi bir gün mü?",
           "responseData": {
@@ -182,7 +182,7 @@
         },
         {
           "id": 6,
-          "order": 4,
+          "order": 6,
           "type": "likert",
           "text": "Şu cümleye ne kadar katılıyorsun: Bugünü tekrar yaşamak isterdim.",
           "responseData": {
@@ -213,6 +213,15 @@
                 "value": 1
               }
             ]
+          }
+        },
+        {
+          "id": 7,
+          "order": 7,
+          "type": "open-ended",
+          "text": "Eklemek istediğiniz bir şeyler var mı?",
+          "responseData": {
+            "required": true
           }
         }
       ]
@@ -259,7 +268,8 @@
         "not-started-surveys": "Yeni Anketler",
         "ongoing-surveys": "Devam Eden Anketler",
         "start": "Başla",
-        "continue": "Devam Et"
+        "continue": "Devam Et",
+        "next-question": "Sonraki Soru"
       }
     },
     "en": {
@@ -302,7 +312,8 @@
         "not-started-surveys": "New Surveys",
         "ongoing-surveys": "Ongoing Surveys",
         "start": "Start",
-        "continue": "Continue"
+        "continue": "Continue",
+        "next-question": "Next Question"
       }
     }
   }

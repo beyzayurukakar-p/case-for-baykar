@@ -82,17 +82,18 @@ const QuestionCarousel = (props: {
     ({ item: question, index }) => {
       return (
         <QuestionItem
+          surveyId={survey.id}
           question={question}
           questionIndex={index}
           onPressPrevious={_onPressPrevious}
-          onPressAnswer={(response: any) => _onPressAnswer(index, response)}
+          onResponseSubmitted={(response: any) => _onPressAnswer(index, response)}
           onPressNext={_onPressNext}
           previousDisabled={index === 0}
           nextDisabled={!isQuestionAnswered(question.id, ongoingSurvey)}
         />
       );
     },
-    [_onPressPrevious, _onPressAnswer, _onPressNext, ongoingSurvey]
+    [_onPressPrevious, _onPressAnswer, _onPressNext, ongoingSurvey, survey.id]
   );
 
   return (

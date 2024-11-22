@@ -1,6 +1,7 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../../../core/store';
-import { OngoingSurvey } from '../types/surveyTypes';
+import { OngoingSurvey, Survey } from '../types/surveyTypes';
+import { compareByOrderFn } from '../utils/sortByOrder';
 
 const notStartedSurveys = createSelector(
   (state: RootState) => state.survey.notStartedSurveys,
@@ -12,7 +13,7 @@ const ongoingSurveys = createSelector(
   (state: RootState) => state.survey.surveys,
   (state: RootState) => state.survey.ongoingSurveys,
   (allSurveyObj, ongoingSurveysObj) => {
-    const list = [];
+    const list: Array<Survey & OngoingSurvey> = [];
     for (const surveyId of Object.keys(ongoingSurveysObj)) {
       list.push({
         ...ongoingSurveysObj[Number(surveyId)],
@@ -44,13 +45,13 @@ const surveyById = createSelector(
   (surveys, surveyId) => {
     const survey = surveys[surveyId];
     // order questions
-    survey.questions.sort((q1, q2) => {
-      if (q1.order > q2.order) return 1;
-      if (q2.order > q1.order) return -1;
-      return 0;
-    });
+    const surveyQuestions = [...survey.questions];
+    surveyQuestions.sort(compareByOrderFn);
 
-    return survey;
+    return {
+      ...survey,
+      questions: surveyQuestions,
+    };
   }
 );
 
@@ -70,6 +71,18 @@ const responseCountOfSurvey = createSelector(
   }
 );
 
+const responseOfQuestion = createSelector(
+  (state: RootState) => state.survey.ongoingSurveys,
+  (_state: RootState, surveyId: number) => surveyId,
+  (_state: RootState, _surveyId: number, questionId: number) => questionId,
+  (ongoingSurveysObj, surveyId, questionId) => {
+    const ongoingSurvey: OngoingSurvey | undefined = ongoingSurveysObj[surveyId];
+    const responses = ongoingSurvey?.responses;
+    const response = responses[questionId];
+    return response?.response;
+  }
+);
+
 export const surveySelectors = {
   // Lists
   notStartedSurveys,
@@ -81,6 +94,7 @@ export const surveySelectors = {
   ongoingSurveyById,
   completedSurveyById,
 
-  // Other data
+  // Response
   responseCountOfSurvey,
+  responseOfQuestion,
 };

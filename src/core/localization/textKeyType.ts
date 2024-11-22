@@ -37,4 +37,5 @@ export type TextKeys =
   | 'not-started-surveys'
   | 'ongoing-surveys'
   | 'start'
-  | 'continue';
+  | 'continue'
+  | 'next-question';

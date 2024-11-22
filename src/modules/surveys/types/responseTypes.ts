@@ -47,7 +47,9 @@ export type LikertResponseData = {
   options: LikertOption[];
 };
 
-export type OpenEndedResponseData = {};
+export type OpenEndedResponseData = {
+  required: boolean;
+};
 
 export type ResponseData =
   | SingleChoiceResponseData
