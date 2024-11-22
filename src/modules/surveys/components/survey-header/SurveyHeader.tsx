@@ -6,6 +6,8 @@ import { SafeAreaView, View } from 'react-native';
 import { useAppTheme, useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SurveyHeader.styles';
 import dimensions from '../../../../common/styling/dimensions';
+import { useNavigation } from '@react-navigation/native';
+import { ScreenNavigationProp } from '../../../../core/navigation/signedInStack';
 
 export type SurveyHeaderRef = { getDuration: () => number };
 type SurveyHeaderProps = {
@@ -25,6 +27,7 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
 
     const styles = useThemedStyles(createStyles);
     const theme = useAppTheme();
+    const nav = useNavigation<ScreenNavigationProp<'Survey'>>();
 
     const [durationMs, setDurationMs] = useState<number>(0);
     const durationObj = intervalToDuration({ start: 0, end: durationMs });
@@ -37,6 +40,10 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
         clearInterval(id);
       };
     }, []);
+
+    const _onPress_Home = () => {
+      nav.popTo('Tabs', { screen: 'Home' });
+    };
 
     const _renderTimer = () => {
       return (
@@ -88,7 +95,7 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
               icon={'home'}
               mode="contained"
               containerColor={theme.colors.onPrimary}
-              onPress={() => {}}
+              onPress={_onPress_Home}
             />
             {_renderTimer()}
           </View>
