@@ -15,9 +15,6 @@ export const createStyles = ({ colors: _colors }: CreateStylesParams) =>
       flexGrow: 1,
       flexShrink: 1,
     },
-    responseScroll: {
-      flex: 1,
-    },
     buttonsContainer: {
       marginTop: dimensions.rowSpace,
       flexDirection: 'row',

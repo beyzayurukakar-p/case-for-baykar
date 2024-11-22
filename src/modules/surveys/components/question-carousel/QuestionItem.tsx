@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { View } from 'react-native';
 import { Question } from '../../types/questionTypes';
 import { Button, Icon, Text } from 'react-native-paper';
 import { responseComponentsByType } from '../responses';
@@ -41,13 +41,11 @@ const QuestionItem = (props: {
         {props.question.text}
       </Text>
       <View style={styles.responseContainer}>
-        <ScrollView style={styles.responseScroll}>
-          <ResponseComponent
-            response={response}
-            onResponseSubmitted={_onResponseSubmitted}
-            responseData={props.question.responseData}
-          />
-        </ScrollView>
+        <ResponseComponent
+          response={response}
+          onResponseSubmitted={_onResponseSubmitted}
+          responseData={props.question.responseData}
+        />
       </View>
       <View style={styles.buttonsContainer}>
         <Button

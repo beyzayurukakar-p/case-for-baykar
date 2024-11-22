@@ -132,27 +132,32 @@
               {
                 "order": 1,
                 "label": "very-good",
-                "value": 4
+                "value": 4,
+                "color": "#24C133"
               },
               {
                 "order": 2,
                 "label": "good",
-                "value": 3
+                "value": 3,
+                "color": "#ACBC1C"
               },
               {
                 "order": 3,
                 "label": "average",
-                "value": 2
+                "value": 2,
+                "color": "#E3C712"
               },
               {
                 "order": 4,
                 "label": "bad",
-                "value": 1
+                "value": 1,
+                "color": "#FF8B00"
               },
               {
                 "order": 5,
                 "label": "very-bad",
-                "value": 0
+                "value": 0,
+                "color": "#FF2E25"
               }
             ]
           }
