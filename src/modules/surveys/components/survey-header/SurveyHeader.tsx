@@ -8,7 +8,7 @@ import { createStyles } from './SurveyHeader.styles';
 import dimensions from '../../../../common/styling/dimensions';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
-export type SurveyHeaderRef = { getDuration: () => number };
+export type SurveyHeaderRef = { getDuration: () => number; pause: () => void; resume: () => void };
 type SurveyHeaderProps = {
   surveyTitle: string;
   questionCount: number;
@@ -27,22 +27,30 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
 
     const [durationMs, setDurationMs] = useState<number>(startDurationFrom || 0);
     const durationObj = intervalToDuration({ start: 0, end: durationMs });
+    const [paused, setPaused] = useState<boolean>(false);
 
     useEffect(() => {
       // Setting up timer
       const id = setInterval(() => {
+        if (paused) return;
         setDurationMs((prev) => prev + 1000);
       }, 1000);
       return () => {
         clearInterval(id);
       };
-    }, []);
+    }, [paused]);
 
     // Ref methods
     useImperativeHandle(
       ref,
       () => ({
         getDuration: () => durationMs,
+        pause: () => {
+          setPaused(true);
+        },
+        resume: () => {
+          setPaused(false);
+        },
       }),
       [durationMs]
     );

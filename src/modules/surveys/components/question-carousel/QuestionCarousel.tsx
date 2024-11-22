@@ -6,6 +6,10 @@ import { useDispatch } from 'react-redux';
 import { surveySlice } from '../../store/surveySlice';
 import QuestionItem from './QuestionItem';
 import { SurveyHeaderRef } from '../survey-header/SurveyHeader';
+import { View } from 'react-native';
+import SurveyCompleted from './SurveyCompleted';
+import { useThemedStyles } from '../../../../core/colorScheme';
+import { createStyles } from './QuestionCarousel.styles';
 
 const isQuestionAnswered = (questionId: number, ongoingSurvey?: OngoingSurvey) => {
   return ongoingSurvey?.responses[questionId] !== undefined;
@@ -19,12 +23,14 @@ const QuestionCarousel = (props: {
   const { survey, ongoingSurvey, timerRef } = props;
 
   const dispatch = useDispatch();
+  const styles = useThemedStyles(createStyles);
 
   const carouselRef = useRef<ICarouselInstance>(null);
 
   // States
   const [isInitialIndexUpdated, setIsInitialIndexUpdated] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const [showSurveyCompleted, setShowSurveyComplete] = useState<boolean>(false);
 
   useEffect(() => {
     // Make sure this callback is run once:
@@ -75,8 +81,19 @@ const QuestionCarousel = (props: {
     setCurrentIndex((prev) => prev - 1);
   }, []);
   const _onPressNext = useCallback(() => {
-    setCurrentIndex((prev) => prev + 1);
-  }, []);
+    if (currentIndex === survey.questions.length - 1) {
+      // If this is the last question, then show 'survey completed' message
+      setShowSurveyComplete(true);
+      timerRef.current?.pause();
+    } else {
+      setCurrentIndex((prev) => prev + 1);
+    }
+  }, [currentIndex, survey.questions.length, timerRef]);
+
+  const _onPressBackToQuestions = () => {
+    setShowSurveyComplete(false);
+    timerRef.current?.resume();
+  };
 
   const _renderQuestionItem: CarouselRenderItem<(typeof survey)['questions'][0]> = useCallback(
     ({ item: question, index }) => {
@@ -97,14 +114,24 @@ const QuestionCarousel = (props: {
   );
 
   return (
-    <Carousel
-      ref={carouselRef}
-      loop={false}
-      data={survey.questions}
-      renderItem={_renderQuestionItem}
-      width={dimensions.width}
-      enabled={false}
-    />
+    <>
+      <Carousel
+        ref={carouselRef}
+        loop={false}
+        data={survey.questions}
+        renderItem={_renderQuestionItem}
+        width={dimensions.width}
+        enabled={false}
+      />
+      {showSurveyCompleted ? (
+        <View style={styles.surveyCompletedContainer}>
+          <SurveyCompleted
+            surveyId={survey.id}
+            onPressBack={_onPressBackToQuestions}
+          />
+        </View>
+      ) : null}
+    </>
   );
 };
 

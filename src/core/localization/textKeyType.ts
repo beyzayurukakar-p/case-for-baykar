@@ -42,4 +42,5 @@ export type TextKeys =
   | 'ok'
   | 'end-survey'
   | 'survey-complete'
-  | 'view-survey-result';
+  | 'view-survey-result'
+  | 'go-back-or-view-results';

@@ -231,6 +231,7 @@
         "ok": "Tamam",
         "end-survey": "Bitir",
         "survey-complete": "Anket Tamamlandı!",
+        "go-back-or-view-results": "İster geri gidip yanıtlarınızı düzenleyebilir, isterseniz de bitirip sonuçları görüntüleyebilirsiniz.",
         "view-survey-result": "Sonuçları görüntüleyin"
       }
     },
@@ -279,6 +280,7 @@
         "ok": "OK",
         "end-survey": "End Survey",
         "survey-complete": "Survey is Complete!",
+        "go-back-or-view-results": "You can go back to edit your responses or you can end the survey to view the results.",
         "view-survey-result": "View results"
       }
     }

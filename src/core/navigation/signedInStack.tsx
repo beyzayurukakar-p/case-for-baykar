@@ -1,7 +1,7 @@
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { tabNavigator } from './tabNavigator';
 import { PrivacyPolicyScreen, TermsConditionsScreen } from '../../modules/profile';
-import { SurveyScreen, SurveyCompletedScreen, SurveysToDoListScreen } from '../../modules/surveys';
+import { SurveyScreen, SurveysToDoListScreen } from '../../modules/surveys';
 import HeaderTitle from './components/HeaderTitle';
 import { StaticParamList } from '@react-navigation/native';
 
@@ -16,7 +16,6 @@ export const signedInStack = createStackNavigator({
         gestureEnabled: false,
       },
     },
-    SurveyCompleted: SurveyCompletedScreen,
     SurveysToDoList: {
       screen: SurveysToDoListScreen,
       options: {
