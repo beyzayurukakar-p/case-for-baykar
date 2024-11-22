@@ -158,7 +158,7 @@
           }
         },
         {
-          "id": 3,
+          "id": 4,
           "order": 3,
           "type": "slider",
           "text": "Bugüne kaç puan verirsin?",
@@ -169,7 +169,7 @@
           }
         },
         {
-          "id": 4,
+          "id": 5,
           "order": 4,
           "type": "yes-no",
           "text": "Sence bugün dünden daha iyi bir gün mü?",
@@ -181,7 +181,7 @@
           }
         },
         {
-          "id": 4,
+          "id": 6,
           "order": 4,
           "type": "likert",
           "text": "Şu cümleye ne kadar katılıyorsun: Bugünü tekrar yaşamak isterdim.",

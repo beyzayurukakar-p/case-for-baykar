@@ -4,10 +4,8 @@ import dimensions from '../../../../common/styling/dimensions';
 
 export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({
-    safeArea: {
-      backgroundColor: colors.primary,
-    },
     container: {
+      backgroundColor: colors.primary,
       paddingHorizontal: dimensions.pageMargin,
       paddingVertical: dimensions.measure(10),
     },

@@ -2,37 +2,34 @@ import { intervalToDuration } from 'date-fns';
 import { forwardRef, useEffect, useImperativeHandle, useState } from 'react';
 import { Icon, IconButton, ProgressBar, Text } from 'react-native-paper';
 import { formatDuration } from '../../utils/timerUtils';
-import { SafeAreaView, View } from 'react-native';
+import { View } from 'react-native';
 import { useAppTheme, useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SurveyHeader.styles';
 import dimensions from '../../../../common/styling/dimensions';
-import { useNavigation } from '@react-navigation/native';
-import { ScreenNavigationProp } from '../../../../core/navigation/signedInStack';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 export type SurveyHeaderRef = { getDuration: () => number };
 type SurveyHeaderProps = {
   surveyTitle: string;
   questionCount: number;
   currentStep: number;
+  startDurationFrom?: number;
+  onPressHome: () => void;
 };
+
 const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
   (props: SurveyHeaderProps, ref) => {
-    useImperativeHandle(ref, () => ({
-      getDuration: () => {
-        return durationMs;
-      },
-    }));
-
-    const { surveyTitle, questionCount, currentStep } = props;
+    const { surveyTitle, questionCount, currentStep, startDurationFrom } = props;
 
     const styles = useThemedStyles(createStyles);
     const theme = useAppTheme();
-    const nav = useNavigation<ScreenNavigationProp<'Survey'>>();
+    const insets = useSafeAreaInsets();
 
-    const [durationMs, setDurationMs] = useState<number>(0);
+    const [durationMs, setDurationMs] = useState<number>(startDurationFrom || 0);
     const durationObj = intervalToDuration({ start: 0, end: durationMs });
 
     useEffect(() => {
+      // Setting up timer
       const id = setInterval(() => {
         setDurationMs((prev) => prev + 1000);
       }, 1000);
@@ -41,10 +38,16 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
       };
     }, []);
 
-    const _onPress_Home = () => {
-      nav.popTo('Tabs', { screen: 'Home' });
-    };
+    // Ref methods
+    useImperativeHandle(
+      ref,
+      () => ({
+        getDuration: () => durationMs,
+      }),
+      [durationMs]
+    );
 
+    // Renderers
     const _renderTimer = () => {
       return (
         <View style={styles.timerContainer}>
@@ -88,26 +91,24 @@ const SurveyHeader = forwardRef<SurveyHeaderRef, SurveyHeaderProps>(
     };
 
     return (
-      <SafeAreaView style={styles.safeArea}>
-        <View style={styles.container}>
-          <View style={styles.topContainer}>
-            <IconButton
-              icon={'home'}
-              mode="contained"
-              containerColor={theme.colors.onPrimary}
-              onPress={_onPress_Home}
-            />
-            {_renderTimer()}
-          </View>
-          <Text
-            variant="titleMedium"
-            style={styles.surveyTitleText}
-          >
-            {surveyTitle}
-          </Text>
-          {_renderProgress()}
+      <View style={[styles.container, insets.top > 0 ? { paddingTop: insets.top } : null]}>
+        <View style={styles.topContainer}>
+          <IconButton
+            icon={'home'}
+            mode="contained"
+            containerColor={theme.colors.onPrimary}
+            onPress={props.onPressHome}
+          />
+          {_renderTimer()}
         </View>
-      </SafeAreaView>
+        <Text
+          variant="titleMedium"
+          style={styles.surveyTitleText}
+        >
+          {surveyTitle}
+        </Text>
+        {_renderProgress()}
+      </View>
     );
   }
 );

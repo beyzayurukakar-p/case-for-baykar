@@ -48,9 +48,14 @@ export const surveySlice = createSlice({
     */
     viewQuestion: (
       state,
-      action: PayloadAction<{ surveyId: number; questionId: number; duration: number }>
+      action: PayloadAction<{
+        surveyId: number;
+        questionIndex: number;
+        duration: number;
+      }>
     ) => {
-      const { surveyId, questionId, duration } = action.payload;
+      const { surveyId, questionIndex, duration } = action.payload;
+      const questionId = state.surveys[surveyId].questions[questionIndex].id;
 
       /*
       If this is the first time the user views this survey,
@@ -65,6 +70,7 @@ export const surveySlice = createSlice({
           ongoingQuestion: {
             id: questionId,
             duration: 0,
+            index: questionIndex,
           },
         };
         delete state.notStartedSurveys[surveyId];
@@ -78,13 +84,17 @@ export const surveySlice = createSlice({
       state.ongoingSurveys[surveyId].surveyDuration = duration;
 
       /*
-      If there is NO response to this question,
+      If there is NO response to this question and the question is already not ongoing,
       then the user has viewed other questions in this survey but views this question for the first time.
       So, update ongoing question instance and set question duration to 0
       */
-      if (!state.ongoingSurveys[surveyId].responses[questionId]) {
+      if (
+        !state.ongoingSurveys[surveyId].responses[questionId] &&
+        state.ongoingSurveys[surveyId].ongoingQuestion?.id !== questionId
+      ) {
         state.ongoingSurveys[surveyId].ongoingQuestion = {
           id: questionId,
+          index: questionIndex,
           duration: 0,
         };
         return;
@@ -99,6 +109,7 @@ export const surveySlice = createSlice({
         const responseDuration = state.ongoingSurveys[surveyId].responses[questionId].duration;
         state.ongoingSurveys[surveyId].ongoingQuestion = {
           id: questionId,
+          index: questionIndex,
           duration: responseDuration,
         };
         return;

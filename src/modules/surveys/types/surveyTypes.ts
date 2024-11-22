@@ -8,6 +8,7 @@ export type Survey = {
 
 export type OngoingQuestion = {
   id: number;
+  index: number;
   duration: number;
 };
 
