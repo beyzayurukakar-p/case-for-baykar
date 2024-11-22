@@ -30,6 +30,8 @@ const QuestionItem = (props: {
   const _onResponseSubmitted = (newValue: any) => {
     props.onResponseSubmitted(newValue);
   };
+
+  console.log(props.question.text, props.nextDisabled);
   return (
     <View style={styles.container}>
       <Text
@@ -69,6 +71,14 @@ const QuestionItem = (props: {
           mode="contained"
           disabled={props.nextDisabled}
           onPress={props.onPressNext}
+          theme={{
+            colors: {
+              primary: theme.colors.primary,
+              onPrimary: theme.colors.onPrimary,
+              surfaceDisabled: theme.colors.surfaceDisabled,
+              onSurfaceDisabled: theme.colors.onSurfaceDisabled,
+            },
+          }}
         >
           {t('next-question')}
         </Button>

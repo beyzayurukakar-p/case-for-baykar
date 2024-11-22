@@ -46,7 +46,7 @@ const QuestionCarousel = (props: {
     1. Scroll carousel to that index
     2. Notify store that the question at {currentIndex} is being viewed
     */
-    carouselRef.current?.scrollTo({ index: currentIndex });
+    carouselRef.current?.scrollTo({ index: currentIndex, animated: true });
     dispatch(
       surveySlice.actions.viewQuestion({
         surveyId: survey.id,
