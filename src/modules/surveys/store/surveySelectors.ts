@@ -2,8 +2,10 @@ import { createSelector } from '@reduxjs/toolkit';
 import { RootState } from '../../../core/store';
 
 export const surveySelectors = {
+  surveyById: (state: RootState, surveyId: number) => state.survey.surveys[surveyId],
   notStartedSurveys: createSelector(
     (state: RootState) => state.survey.notStartedSurveys,
+    (deneme: string) => deneme,
     (notStartedSurveysObj) => Object.values(notStartedSurveysObj)
   ),
   ongoingSurveys: createSelector(

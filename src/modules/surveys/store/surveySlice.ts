@@ -144,8 +144,11 @@ export const surveySlice = createSlice({
         state.ongoingSurveys[surveyId].responses[questionId].duration = ongoingQuestion.duration;
       }
     },
-    pauseSurvey: (state, action: PayloadAction<{ surveyId: number; duration: number }>) => {
-      const { surveyId, duration } = action.payload;
+    pauseSurvey: (
+      state,
+      action: PayloadAction<{ surveyId: number; duration: number; date: string }>
+    ) => {
+      const { surveyId, duration, date } = action.payload;
 
       /* Get the latest duration saved */
       const latestDurationSaved = state.ongoingSurveys[surveyId].surveyDuration;
@@ -157,14 +160,20 @@ export const surveySlice = createSlice({
         ongoingQuestion.duration += timeSinceLastStep;
       }
 
+      /* Update lastUpdate date */
+      state.ongoingSurveys[surveyId].lastUpdatedOn = date;
+
       /*
       In all steps in a survey (except first view), save survey duration.
       So that we can get the difference to use it to calculate the duration of the next step
       */
       state.ongoingSurveys[surveyId].surveyDuration = duration;
     },
-    completeSurvey: (state, action: PayloadAction<{ surveyId: number; duration: number }>) => {
-      const { surveyId, duration } = action.payload;
+    completeSurvey: (
+      state,
+      action: PayloadAction<{ surveyId: number; duration: number; date: string }>
+    ) => {
+      const { surveyId, duration, date } = action.payload;
 
       /* Get the latest duration saved */
       const latestDurationSaved = state.ongoingSurveys[surveyId].surveyDuration;
@@ -183,9 +192,12 @@ export const surveySlice = createSlice({
       }
 
       /* Add to completed surveys */
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { lastUpdatedOn: _, ...rest } = ongoingSurvey;
       state.completedSurveys[surveyId] = {
-        ...ongoingSurvey,
+        ...rest,
         result,
+        completedOn: date,
       };
 
       /* Remove survey from ongoing surveys */

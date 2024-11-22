@@ -35,6 +35,7 @@ export const customColors = {
     inverseSurface: 'rgb(48, 48, 52)',
     inverseOnSurface: 'rgb(243, 240, 244)',
     inversePrimary: 'rgb(187, 195, 255)',
+    inversePrimary2: 'rgb(157, 165, 225)',
     elevation: {
       level0: 'transparent',
       level1: 'rgb(246, 243, 251)',
@@ -82,6 +83,7 @@ export const customColors = {
     inverseSurface: 'rgb(228, 225, 230)',
     inverseOnSurface: 'rgb(48, 48, 52)',
     inversePrimary: 'rgb(71, 85, 182)',
+    inversePrimary2: 'rgb(101, 115, 212)',
     elevation: {
       level0: 'transparent',
       level1: 'rgb(35, 35, 42)',

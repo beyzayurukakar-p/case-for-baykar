@@ -21,8 +21,10 @@ export type OngoingSurvey = {
     };
   };
   surveyDuration: number;
+  lastUpdatedOn?: string;
 };
 
-export type CompletedSurvey = OngoingSurvey & {
+export type CompletedSurvey = Omit<OngoingSurvey, 'lastUpdatedOn'> & {
   result: number;
+  completedOn: string;
 };

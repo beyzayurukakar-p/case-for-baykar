@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native';
-import { CreateStylesParams } from '../../../core/colorScheme';
-import dimensions from '../../../common/styling/dimensions';
+import dimensions from '../../../../common/styling/dimensions';
+import { CreateStylesParams } from '../../../../core/colorScheme';
 
 export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({

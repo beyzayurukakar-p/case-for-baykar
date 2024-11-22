@@ -1,12 +1,12 @@
 import { Button, Icon, Text } from 'react-native-paper';
-import Card from '../../../common/components/card/Card';
-import { OngoingSurvey, Survey } from '../types/surveyTypes';
-import { useAppTheme, useThemedStyles } from '../../../core/colorScheme';
 import { createStyles } from './SurveyItem.styles';
 import { View } from 'react-native';
-import { useLocalization } from '../../../core/localization';
-import dimensions from '../../../common/styling/dimensions';
 import { useNavigation } from '@react-navigation/native';
+import { OngoingSurvey, Survey } from '../../types/surveyTypes';
+import { useLocalization } from '../../../../core/localization';
+import { useAppTheme, useThemedStyles } from '../../../../core/colorScheme';
+import dimensions from '../../../../common/styling/dimensions';
+import Card from '../../../../common/components/card/Card';
 
 const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
   const { item } = props;

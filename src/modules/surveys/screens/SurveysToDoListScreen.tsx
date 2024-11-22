@@ -11,7 +11,7 @@ import { createStyles } from './SurveysToDoListScreen.styles';
 import dimensions from '../../../common/styling/dimensions';
 import { Survey } from '../types/surveyTypes';
 import { TextKeys, useLocalization } from '../../../core/localization';
-import SurveyItem from '../components/SurveyItem';
+import SurveyItem from '../components/survey-item/SurveyItem';
 
 type SectionItem = {
   name: 'not-started' | 'ongoing';
