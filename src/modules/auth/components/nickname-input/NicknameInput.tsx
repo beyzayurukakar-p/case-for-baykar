@@ -3,6 +3,7 @@ import { useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './NicknameInput.styles';
 
+/** Nickname textinput with privacy related text beneath */
 const NicknameInput = (props: { value?: string; onChange: (val: string) => void }) => {
   const { t } = useLocalization();
   const styles = useThemedStyles(createStyles);

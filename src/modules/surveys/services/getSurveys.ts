@@ -6,6 +6,10 @@ import { Survey } from '../types/surveyTypes';
 
 const URL = 'surveys';
 
+/**
+ * Fetches all surveys
+ * @returns Array of surveys. Or throws error.
+ */
 export const getSurveys = async () => {
   let data: Survey[] | undefined;
   let error: TextKeys | undefined;

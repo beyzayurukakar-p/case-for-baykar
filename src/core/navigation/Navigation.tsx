@@ -22,6 +22,7 @@ const RootStack = createStackNavigator({
 
 type RootStackParamList = StaticParamList<typeof RootStack>;
 
+/* This declaration makes sure useNavigation hook is typed globally */
 declare global {
   namespace ReactNavigation {
     interface RootParamList extends RootStackParamList {}

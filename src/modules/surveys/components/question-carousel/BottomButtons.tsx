@@ -5,6 +5,11 @@ import { createStyles } from './BottomButtons.styles';
 import { TextKeys, useLocalization } from '../../../../core/localization';
 import dimensions from '../../../../common/styling/dimensions';
 
+/**
+ * The 'back' and 'next question' buttons on a survey question
+ * Or
+ * The 'back' and 'end survey' buttons at the end of a survey
+ */
 const BottomButtons = (props: {
   onPressLeftButton: () => void;
   onPressRightButton: () => void;

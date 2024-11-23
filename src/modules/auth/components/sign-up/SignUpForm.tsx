@@ -15,6 +15,7 @@ import { checkIfUserExists } from '../../services/checkIfUserExists';
 import Toast from 'react-native-toast-message';
 import { SignUpFormContext } from '../../store/signUpFormContext';
 
+/** Sign-up form is first step of sign-up flow. Also a scene in react-native-tab-view */
 const SignUpForm = (props: SceneRendererProps) => {
   const { t, currentLanguage, dateLocale } = useLocalization();
   const styles = useThemedStyles(createStyles);
@@ -52,7 +53,8 @@ const SignUpForm = (props: SceneRendererProps) => {
       });
       return;
     }
-    // Check if user already exists
+    // Check if user already exists.
+    // The hook shows the warning if user exists.
     requestCheckIfUserExists(
       { nickname },
       {

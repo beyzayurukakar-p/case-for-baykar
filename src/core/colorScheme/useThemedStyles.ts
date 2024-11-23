@@ -11,6 +11,12 @@ type NamedStyles = {
   [P: string]: ViewStyle | TextStyle | ImageStyle;
 };
 
+/**
+ * Hook that makes it possible to dynamically update the app's appearance when theme is changed.
+ * @param createStyles A function that takes colors and returns named styles
+ * @example const createStyles = ({colors}: CreateStylesParams) => StyleSheet.create({ ... })
+ * @returns The calculated styles object
+ */
 export const useThemedStyles = <T extends NamedStyles>(
   createStyles: (params: CreateStylesParams) => T
 ): T => {

@@ -1,5 +1,7 @@
 import { Dimensions, Platform } from 'react-native';
 
+/** Globally used dimension utilities and constants */
+
 const window = Dimensions.get('window');
 const width = Math.min(window?.width, window?.height);
 const height = Math.max(window?.width, window?.height);

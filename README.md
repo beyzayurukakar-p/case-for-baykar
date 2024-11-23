@@ -1,3 +1,30 @@
+# İnceleyecek Olana Not
+
+* Bu React Native Cli ile oluşturulmuş standart bir uygulama. Aşağıda [Default README Başlangıcı](#default-readme-başlangıcı) ile başlayan ve default olarak gelen ayağa kaldırma adımlarını takip ederek uygulamayı ayağa kaldırabilirsiniz.
+
+* Bu uygulama, veri kaynağı için `json-server` kullanıyor. Bu veri kaynağı, Github repository ile senkronize bir şekilde şu adresten servis ediliyor: https://my-json-server.typicode.com/beyzayurukakar-p/case-for-baykar
+
+* Eğer elle veriyi düzenlemek isterseniz, projede yer alan `db.json` dosyasını düzenleyebilirsiniz.
+Uygulamanın bu lokal dosyayı kaynak olarak kullanması için şunları yapmalısınız:
+1. `src/common/services/client.ts` dosyasında `BASE_URL_LOCAL` değerini kullanın.
+2. Aşağıdaki gibi json server'ı kurun:
+````
+npm install -g json-server@0.17.4    # NPM
+yarn global add json-server@0.17.4   # Yarn
+pnpm add -g json-server@0.17.4       # PNPM
+````
+3. Terminalde bu projede yer alan `yarn json-server` komutunu çalıştırın.
+
+NOT: Local server'a yalnızca iOS Simulator üzerinden erişilebiliyor.
+
+* Sürekli tekrar giriş yapmak istemiyorsanız, `src/core/user/slice.ts` dosyasında yoruma alınmış satırı kaldırın ve 10. satırı yoruma alın.
+
+### Proje dokümantasyonu
+`src` klasöründeki ve onun içindeki klasörlerdeki README.md dosyalarını inceleyebilirsiniz.
+
+
+# Default README Başlangıcı
+
 This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
 
 # Getting Started

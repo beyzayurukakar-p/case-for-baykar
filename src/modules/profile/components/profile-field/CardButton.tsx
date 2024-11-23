@@ -3,6 +3,13 @@ import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './CardButton.styles';
 import Card from '../../../../common/components/card/Card';
 
+/**
+ * A Card that acts as a button.
+ * Used in ProfileScreen for rendering touchable cards.
+ * @param props.buttonText Text to render on button
+ * @param props.isDanger Makes the text red-like color
+ * @param props.onPress Called when card is pressed
+ */
 const CardButton = (props: { buttonText: string; isDanger?: boolean; onPress: () => void }) => {
   const styles = useThemedStyles(createStyles);
 

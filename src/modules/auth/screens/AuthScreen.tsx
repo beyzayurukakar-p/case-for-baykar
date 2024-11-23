@@ -20,6 +20,9 @@ const routes: Route[] = [
 
 const renderTabBar = () => null;
 
+/**
+ * AuthScreen handles sign-in and sign-up flow in one screen with react-native-tab-view
+ */
 const AuthScreen = () => {
   const [index, setIndex] = useState(0);
   const [signUpFormData, setSignUpFormData] = useState<SignUpFormData>(null);

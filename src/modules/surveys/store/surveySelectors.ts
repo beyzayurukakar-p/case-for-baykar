@@ -89,17 +89,30 @@ const responseOfQuestion = createSelector(
 
 export const surveySelectors = {
   // Lists
+
+  /** Returns all surveys */
   allSurveys,
+
+  /** Returns the surveys that the user did not yet start */
   notStartedSurveys,
+
+  /** Returns the surveys that the user started */
   ongoingSurveys,
+
+  /** Returns the surveys that the user has completed */
   completedSurveys,
 
   // By Survey ID
+
   surveyById,
   ongoingSurveyById,
   completedSurveyById,
 
   // Response
+
+  /** Returns the number of user's responses in a survey */
   responseCountOfSurvey,
+
+  /** Returns user's response to a question */
   responseOfQuestion,
 };

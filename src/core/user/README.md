@@ -1,0 +1,1 @@
+Bu klasörün tek amacı giriş yapmış kullanıcı bilgisini tutmak ve vermek.

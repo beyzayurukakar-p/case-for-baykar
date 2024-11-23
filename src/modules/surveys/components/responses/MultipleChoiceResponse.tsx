@@ -7,6 +7,10 @@ import { useMemo } from 'react';
 import { compareByOrderFn } from '../../utils/sortByOrder';
 import { ScrollView, View } from 'react-native';
 
+/**
+ * Renders response input for multiple choice questions.
+ * Renders a set of checkboxes.
+ */
 const MultipleChoiceResponse = (props: {
   responseData: MultipleChoiceResponseData;
   response: string[];

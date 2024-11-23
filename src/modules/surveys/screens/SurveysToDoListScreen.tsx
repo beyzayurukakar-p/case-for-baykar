@@ -20,6 +20,9 @@ type SectionItem = {
   data: Array<Survey>;
 };
 
+/**
+ * Renders the screen to list the ongoing (paused) surveys and the new surveys that the user didn't open yet
+ */
 const SurveysToDoListScreen = () => {
   const dispatch = useDispatch();
 
@@ -33,10 +36,12 @@ const SurveysToDoListScreen = () => {
   const ongoingSurveys = useSelector(surveySelectors.ongoingSurveys);
 
   useEffect(() => {
+    // Request surveys if not cached
     if (allSurveys.length === 0) {
       request(undefined, {
         onSuccess: (_allSurveys) => {
           if (_allSurveys) {
+            // Update surveys in store
             dispatch(surveySlice.actions.setSurveys(_allSurveys));
           }
         },
@@ -44,6 +49,7 @@ const SurveysToDoListScreen = () => {
     }
   }, [allSurveys, dispatch, request]);
 
+  // Data for Section List
   const sectionsData: SectionItem[] = useMemo(() => {
     return [
       {

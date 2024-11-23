@@ -1,6 +1,5 @@
 import { createStackNavigator, StackNavigationProp } from '@react-navigation/stack';
 import { tabNavigator } from './tabNavigator';
-import { PrivacyPolicyScreen, TermsConditionsScreen } from '../../modules/profile';
 import {
   CompletedSurveyDetailScreen,
   SurveyScreen,
@@ -12,12 +11,10 @@ import { StaticParamList } from '@react-navigation/native';
 export const signedInStack = createStackNavigator({
   screens: {
     Tabs: tabNavigator,
-    PrivacyPolicy: PrivacyPolicyScreen,
-    TermsConditions: TermsConditionsScreen,
     Survey: {
       screen: SurveyScreen,
       options: {
-        gestureEnabled: false,
+        gestureEnabled: false, // Going back in survey screen needs to be controlled
       },
     },
     SurveysToDoList: {
@@ -38,5 +35,10 @@ export const signedInStack = createStackNavigator({
 });
 
 type SignedInStackParamList = StaticParamList<typeof signedInStack>;
+
+/**
+ * Type to access stack navigator methods of useNavigation
+ * @example useNavigation<ScreenNavigationProp<'Survey'>>()
+ */
 export type ScreenNavigationProp<RouteName extends keyof SignedInStackParamList> =
   StackNavigationProp<SignedInStackParamList, RouteName>;

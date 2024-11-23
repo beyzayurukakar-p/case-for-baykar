@@ -1,3 +1,6 @@
+/**
+ * All keys in translations
+ */
 export type TextKeys =
   | 'surveys-screen-title'
   | 'home-screen-title'

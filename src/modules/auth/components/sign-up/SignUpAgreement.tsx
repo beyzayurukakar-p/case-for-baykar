@@ -14,6 +14,7 @@ import { User } from '../../../../core/user/types';
 import { useAppDispatch } from '../../../../core/store';
 import { userSlice } from '../../../../core/user';
 
+/** Second step of sign-up flow. Also a scene in react-native-tab-view. */
 const SignUpAgreement = (props: SceneRendererProps) => {
   const dispatch = useAppDispatch();
 
@@ -31,6 +32,7 @@ const SignUpAgreement = (props: SceneRendererProps) => {
   };
 
   const _onPress_AcceptCreate = () => {
+    // Validate
     if (agreedA === false || agreedB === false || agreedC === false) {
       Toast.show({
         type: 'error',
@@ -39,6 +41,7 @@ const SignUpAgreement = (props: SceneRendererProps) => {
       return;
     }
 
+    // Send sign-up request
     requestSignUp(formData?.value as Omit<User, 'id'>, {
       onSuccess: (data) => {
         dispatch(userSlice.actions.setUser(data || null));

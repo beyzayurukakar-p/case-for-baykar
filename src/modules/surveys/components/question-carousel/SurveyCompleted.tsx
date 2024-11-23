@@ -5,6 +5,10 @@ import { createStyles } from './SurveyCompleted.styles';
 import BottomButtons from './BottomButtons';
 import { useLocalization } from '../../../../core/localization';
 
+/**
+ * The last view of a survey.
+ * Gives the user a chance to go back and edit responses or end and view results.
+ */
 const SurveyCompleted = (props: { onPressBack: () => void; onPressEndSurvey: () => void }) => {
   const styles = useThemedStyles(createStyles);
   const { t } = useLocalization();

@@ -15,10 +15,12 @@ import { GivenResponse } from '../types/surveyTypes';
 import { Question } from '../types/questionTypes';
 import CompletedResponseItem from '../components/completed-response-item/CompletedResponseItem';
 
+/**
+ * Renders the screen for the details/results of a completed survey
+ */
 const CompletedSurveyDetailScreen = (
   props: StaticScreenProps<{
     surveyId: number;
-    waitForResults?: boolean;
   }>
 ) => {
   const surveyId = props.route.params.surveyId;
@@ -31,6 +33,7 @@ const CompletedSurveyDetailScreen = (
     surveySelectors.completedSurveyById(state, surveyId)
   );
 
+  // Modifying the responses to include question data
   const modifiedResponseData = useMemo(() => {
     if (completedSurvey === undefined) {
       return [];
@@ -63,6 +66,7 @@ const CompletedSurveyDetailScreen = (
     return (
       <View style={styles.topInfoContainer}>
         <View style={styles.topSingleInfoContainer}>
+          {/* The date the survey was completed */}
           <Text
             variant="titleSmall"
             style={styles.topInfoLabelText}
@@ -77,6 +81,7 @@ const CompletedSurveyDetailScreen = (
           </Text>
         </View>
         <View style={styles.topSingleInfoContainer}>
+          {/* The calculated result of the survey */}
           <Text
             variant="titleSmall"
             style={styles.topInfoLabelText}
@@ -120,6 +125,7 @@ const CompletedSurveyDetailScreen = (
 
   return (
     <View style={styles.container}>
+      {/* Survey header with title and duration */}
       <SurveyHeader
         surveyTitle={completedSurvey.title}
         initiallyPaused

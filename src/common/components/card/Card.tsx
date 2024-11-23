@@ -3,7 +3,17 @@ import { TouchableOpacity } from 'react-native';
 import { PropsWithChildren } from 'react';
 import { useThemedStyles } from '../../../core/colorScheme';
 
-const Card = (props: PropsWithChildren<{ onPress?: () => void }>) => {
+type CardProps = {
+  /**
+   * Called when Card is pressed
+   * */
+  onPress?: () => void;
+};
+
+/**
+ * Basic Card component to encompass content with differing background color.
+ */
+const Card = (props: PropsWithChildren<CardProps>) => {
   const styles = useThemedStyles(createStyles);
 
   return (

@@ -6,6 +6,10 @@ import { useEffect, useState } from 'react';
 import { Keyboard, ScrollView } from 'react-native';
 import { useLocalization } from '../../../../core/localization';
 
+/**
+ * Renders response input for open ended questions.
+ * Renders a basic textinput.
+ */
 const OpenEndedResponse = (props: {
   responseData: OpenEndedResponseData;
   response: string | undefined;
@@ -22,6 +26,7 @@ const OpenEndedResponse = (props: {
   const buttonDisabled = responseData.required && value.trim().length === 0;
 
   useEffect(() => {
+    // Adjust height of textinput when keyboard is visible
     const listener1 = Keyboard.addListener('keyboardDidShow', () => {
       setKeyboardOpen(true);
     });

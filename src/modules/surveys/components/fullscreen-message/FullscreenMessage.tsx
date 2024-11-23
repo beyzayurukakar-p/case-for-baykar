@@ -4,6 +4,10 @@ import { TextKeys, useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './FullscreenMessage.styles';
 
+/**
+ * A fullscreen container with a message in the middle.
+ * Used for empty lists or loading messages.
+ */
 const FullscreenMessage = (props: { customMessage?: TextKeys }) => {
   const { t } = useLocalization();
   const styles = useThemedStyles(createStyles);

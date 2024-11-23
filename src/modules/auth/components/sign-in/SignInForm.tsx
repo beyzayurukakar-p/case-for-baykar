@@ -15,6 +15,7 @@ import { User } from '../../../../core/user/types';
 import { useAppDispatch } from '../../../../core/store';
 import { userSlice } from '../../../../core/user';
 
+/** A Sign-in form that is a scene in react-native-tab-view*/
 const SignInForm = (props: SceneRendererProps) => {
   const dispatch = useAppDispatch();
 
@@ -33,6 +34,7 @@ const SignInForm = (props: SceneRendererProps) => {
   };
 
   const _onSignInSuccessful = (data?: User) => {
+    // Set user in store
     dispatch(userSlice.actions.setUser(data || null));
   };
 

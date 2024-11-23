@@ -1,5 +1,6 @@
 import Axios, { AxiosInstance } from 'axios';
 
+// const BASE_URL_LOCAL = 'http://localhost:3000';
 const BASE_URL = 'https://my-json-server.typicode.com/beyzayurukakar-p/case-for-baykar';
 
 export const client: AxiosInstance = Axios.create({

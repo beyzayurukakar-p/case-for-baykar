@@ -6,6 +6,12 @@ import { mockDelay } from '../../../common/utils/mockServerWait';
 
 const buildUrl = (nickname: string) => `users?nickname=${nickname}`;
 
+/**
+ * Checks if a user with `nickname` is already registered
+ * @param params `{ nickname:string }`
+ * @param params.nickname Nickname to check
+ * @returns true if not registered, throws if registered
+ */
 export const checkIfUserExists = async (params: { nickname: string }) => {
   let data: boolean | undefined;
   let error: TextKeys | undefined;

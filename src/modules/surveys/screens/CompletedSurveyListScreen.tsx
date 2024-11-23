@@ -12,6 +12,9 @@ import { useMemo } from 'react';
 import { CompletedSurvey } from '../types/surveyTypes';
 import SurveyItem from '../components/survey-item/SurveyItem';
 
+/**
+ * Renders the screen for listing all the completed surveys.
+ */
 const CompletedSurveyListScreen = () => {
   const styles = useThemedStyles(createStyles);
   const { t } = useLocalization();
@@ -34,7 +37,6 @@ const CompletedSurveyListScreen = () => {
   const _onPressSurveyItem = (surveyId: number) => {
     nav.navigate('CompletedSurveyDetail', {
       surveyId,
-      waitForResults: false,
     });
   };
 
@@ -42,6 +44,7 @@ const CompletedSurveyListScreen = () => {
     return (
       <View style={styles.topInfoContainer}>
         <View style={styles.topSingleInfoContainer}>
+          {/* Total count of completed surveys */}
           <Text
             variant="headlineSmall"
             style={styles.topInfoValueText}
@@ -56,6 +59,7 @@ const CompletedSurveyListScreen = () => {
           </Text>
         </View>
         <View style={styles.topSingleInfoContainer}>
+          {/* Count of surveys completed today */}
           <Text
             variant="headlineSmall"
             style={styles.topInfoValueText}

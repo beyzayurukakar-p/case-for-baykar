@@ -1,0 +1,1 @@
+Bu klasörde servis istekleri için gerekli parçalar bulunuyor.

@@ -2,6 +2,7 @@ import { Duration } from 'date-fns';
 
 const zeroPad = (num: number) => String(num).padStart(2, '0');
 
+/** Formats a duration object to '00:00:00' */
 export const formatDuration = (duration: Duration) => {
   let formatted: string = '';
   formatted += duration.hours ? `${zeroPad(duration.hours)}:` : '00:';

@@ -1,5 +1,6 @@
 import { Text } from 'react-native-paper';
 
+// Not developed
 const LikertResponse = () => {
   return <Text>LikertResponse</Text>;
 };

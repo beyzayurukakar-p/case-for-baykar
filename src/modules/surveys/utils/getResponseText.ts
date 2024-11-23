@@ -2,6 +2,15 @@ import { TextKeys } from '../../../core/localization';
 import { Question } from '../types/questionTypes';
 import { MultipleChoiceResponseData, SliderResponseData } from '../types/responseTypes';
 
+/**
+ * Finds the label of the response (if applicable).
+ * Formats the response in a nice-looking text.
+ *
+ * @param responseValue response's value as stored in data
+ * @param question question object to have access to response labels
+ * @param localize to localize response's label
+ * @returns nice-looking string
+ */
 export const getResponseText = (
   responseValue: any,
   question: Question,

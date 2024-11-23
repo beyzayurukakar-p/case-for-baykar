@@ -6,6 +6,12 @@ import { MD3DarkTheme, MD3LightTheme, adaptNavigationTheme } from 'react-native-
 import merge from 'deepmerge';
 import { customColors } from './customColors';
 
+/*
+This code is almost totally copied from the documentation of React Native Paper.
+It synchronizes the colors of React Native Paper and React Navigation.
+Some custom colors are also added. 
+*/
+
 const { LightTheme, DarkTheme } = adaptNavigationTheme({
   reactNavigationLight: NavigationDefaultTheme,
   reactNavigationDark: NavigationDarkTheme,

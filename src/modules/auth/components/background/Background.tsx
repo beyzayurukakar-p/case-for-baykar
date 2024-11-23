@@ -8,24 +8,22 @@ import {
 } from './Background.styles';
 import { useThemedStyles } from '../../../../core/colorScheme';
 
+/** Renders the background image and modal-like container in auth screens */
 const Background = (props: PropsWithChildren<{}>) => {
   const styles = useThemedStyles(createStyles);
   const [contentHeight, setContentHeight] = useState<number>(CONTENT_NORMAL_HEIGHT);
 
   useEffect(() => {
-    const subscription = Keyboard.addListener('keyboardDidShow', () => {
+    // Update modal-like container's height when keyboard visibility changes
+    const subscription1 = Keyboard.addListener('keyboardDidShow', () => {
       setContentHeight(CONTENT_HEIGHT_FOR_KEYBOARD);
     });
-    return () => {
-      subscription.remove();
-    };
-  }, []);
-  useEffect(() => {
-    const subscription = Keyboard.addListener('keyboardDidHide', () => {
+    const subscription2 = Keyboard.addListener('keyboardDidHide', () => {
       setContentHeight(CONTENT_NORMAL_HEIGHT);
     });
     return () => {
-      subscription.remove();
+      subscription1.remove();
+      subscription2.remove();
     };
   }, []);
 

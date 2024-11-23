@@ -17,6 +17,12 @@ const isQuestionAnswered = (questionId: number, ongoingSurvey?: OngoingSurvey) =
   return ongoingSurvey?.responses[questionId] !== undefined;
 };
 
+/**
+ * Renders a carousel of the questions of a survey.
+ * Notifies the store of two of the steps in a survey:
+ * - Viewing a question
+ * - Answering a question
+ */
 const QuestionCarousel = (props: {
   survey: Survey;
   ongoingSurvey?: OngoingSurvey;
@@ -82,29 +88,34 @@ const QuestionCarousel = (props: {
   );
 
   const _onPressPrevious = useCallback(() => {
-    setCurrentIndex((prev) => prev - 1);
+    setCurrentIndex((current) => current - 1);
   }, []);
+
   const _onPressNext = useCallback(() => {
     if (currentIndex === survey.questions.length - 1) {
-      // If this is the last question, then show 'survey completed' message
+      // If this is the last question, then show 'survey completed' message and pause timer
       setShowSurveyComplete(true);
       timerRef.current?.pause();
     } else {
-      setCurrentIndex((prev) => prev + 1);
+      setCurrentIndex((current) => current + 1);
     }
   }, [currentIndex, survey.questions.length, timerRef]);
 
   const _onPressBackToQuestions = () => {
+    // Hide the completed message and resume timer
     setShowSurveyComplete(false);
     timerRef.current?.resume();
   };
 
   const _onPressEndSurvey = () => {
+    // Go to result of survey
     nav.replace('CompletedSurveyDetail', {
       surveyId: survey.id,
-      waitForResults: true,
     });
 
+    // This redux action removes survey from ongoing list
+    // Which causes weird behavior on this screen
+    // So we do it some time after navigating to the other screen, so that this screen is unmounted
     setTimeout(() => {
       dispatch(
         surveySlice.actions.endSurvey({

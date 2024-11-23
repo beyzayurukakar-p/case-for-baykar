@@ -18,6 +18,7 @@ const HomeScreen = () => {
   const user = useSelector(selectUser);
   const navigateToSurvey = useNavigateToSurvey();
 
+  // Dark and light mode require different setup of gradient to look good
   const gradientColors = useMemo(() => {
     if (theme.dark) {
       return [
@@ -30,6 +31,7 @@ const HomeScreen = () => {
     return [theme.colors.backgroundTransparent, theme.colors.background];
   }, [theme]);
 
+  // Dark and light mode require different setup of gradient to look good
   const gradientLocations = useMemo(() => {
     if (theme.dark) {
       return [0, 0.1, 0.6, 0.8];

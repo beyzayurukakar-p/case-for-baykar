@@ -7,6 +7,10 @@ import { useMemo } from 'react';
 import { compareByOrderFn } from '../../utils/sortByOrder';
 import { TouchableOpacity, View } from 'react-native';
 
+/**
+ * Renders response input for rating questions.
+ * Renders a set of buttons (optionally colored) among which one is picked.
+ */
 const RatingResponse = (props: {
   responseData: RatingResponseData;
   response: string;

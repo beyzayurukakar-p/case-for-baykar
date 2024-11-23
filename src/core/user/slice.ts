@@ -7,15 +7,15 @@ type UserState = {
 };
 
 const INITIAL_STATE: UserState = {
-  // user: null,
-  user: {
-    id: 1,
-    nickname: 'Beyza',
-    email: '',
-    gender: '',
-    password: '123',
-    birthdate: '1991-10-20T21:00:00.000Z',
-  },
+  user: null,
+  // user: {
+  //   id: 1,
+  //   nickname: 'Beyza',
+  //   email: '',
+  //   gender: '',
+  //   password: '123',
+  //   birthdate: '1991-10-20T21:00:00.000Z',
+  // },
 };
 
 export const userSlice = createSlice({

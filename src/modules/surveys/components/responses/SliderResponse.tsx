@@ -6,6 +6,10 @@ import { View } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { useState } from 'react';
 
+/**
+ * Renders response input for slider questions.
+ * Renders a basic slider.
+ */
 const SliderResponse = (props: {
   responseData: SliderResponseData;
   response: number | undefined;

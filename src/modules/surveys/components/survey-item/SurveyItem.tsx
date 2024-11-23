@@ -11,6 +11,9 @@ import { formatDate, intervalToDuration } from 'date-fns';
 import { formatDuration } from '../../utils/timerUtils';
 import { useMemo } from 'react';
 
+/**
+ * Renders a survey item for completed, ongoing, or not-started survey lists.
+ */
 const SurveyItem = (props: {
   item: Survey | (Survey & OngoingSurvey) | CompletedSurvey;
   onPress?: () => void;
@@ -56,6 +59,7 @@ const SurveyItem = (props: {
     return '-';
   }, [status, surveyItem]);
 
+  // For starting new surveys or continuing ongoing surveys
   const _onPress_StartContinue = () => {
     nav.navigate('SignedIn', {
       screen: 'Survey',

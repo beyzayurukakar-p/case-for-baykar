@@ -11,6 +11,9 @@ import { useDispatch } from 'react-redux';
 import { surveySlice } from '../store/surveySlice';
 import { ScreenNavigationProp } from '../../../core/navigation/signedInStack';
 
+/**
+ * Renders the screen where user takes the survey
+ */
 const SurveyScreen = (
   props: StaticScreenProps<{
     surveyId: number;
@@ -54,7 +57,7 @@ const SurveyScreen = (
         ref={surveyHeaderRef}
         surveyTitle={survey.title}
         questionCount={survey.questions.length}
-        currentStep={responseCount}
+        responseCount={responseCount}
         startDurationFrom={ongoingSurvey?.surveyDuration}
         onPressHome={_onPressHome}
       />

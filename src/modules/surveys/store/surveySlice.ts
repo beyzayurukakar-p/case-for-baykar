@@ -1,6 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { CompletedSurvey, OngoingQuestion, OngoingSurvey, Survey } from '../types/surveyTypes';
 
+/*
+See src/modules/survey/DURATION_EXP.md for explanation of time tracking flow
+ */
+
 type SurveyState = {
   surveys: {
     [surveyId: number]: Survey;

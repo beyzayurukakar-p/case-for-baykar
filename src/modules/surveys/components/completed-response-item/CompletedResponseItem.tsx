@@ -10,6 +10,9 @@ import { intervalToDuration } from 'date-fns';
 import { getResponseText } from '../../utils/getResponseText';
 import Card from '../../../../common/components/card/Card';
 
+/**
+ * Renders the response of user to a survey question.
+ */
 const CompletedResponseItem = (props: { response: GivenResponse & { question: Question } }) => {
   const { response } = props;
 
@@ -19,6 +22,7 @@ const CompletedResponseItem = (props: { response: GivenResponse & { question: Qu
   return (
     <Card>
       <View style={styles.topContainer}>
+        {/* Duration to Respond */}
         <Text
           variant="bodyLarge"
           style={styles.questionText}
@@ -33,6 +37,7 @@ const CompletedResponseItem = (props: { response: GivenResponse & { question: Qu
         </Text>
       </View>
       <Divider style={styles.divider} />
+      {/* Formatted response value */}
       <Text
         variant="bodyLarge"
         style={styles.yourResponseText}

@@ -8,6 +8,10 @@ import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './QuestionItem.styles';
 import BottomButtons from './BottomButtons';
 
+/**
+ * Used by QuestionCarousel to render one question item.
+ * Also picks and renders the response component that is suitable to the question type.
+ */
 const QuestionItem = (props: {
   surveyId: number;
   question: Question;

@@ -5,6 +5,7 @@ import { createStyles } from './PasswordInput.styles';
 import { useState } from 'react';
 import { TouchableOpacity, View } from 'react-native';
 
+/** Password textinput with secure text entry and an optional forgot password button */
 const PasswordInput = (props: {
   value?: string;
   onChange: (val: string) => void;

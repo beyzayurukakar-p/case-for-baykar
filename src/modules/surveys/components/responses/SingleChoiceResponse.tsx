@@ -7,6 +7,10 @@ import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './SingleChoiceResponse.styles';
 import { TextKeys, useLocalization } from '../../../../core/localization';
 
+/**
+ * Renders response input for single choice questions.
+ * Renders a basic radio button.
+ */
 const SingleChoiceResponse = (props: {
   responseData: SingleChoiceResponseData;
   response: string;

@@ -14,6 +14,9 @@ export const colorSchemeSlice = createSlice({
   name: 'colorScheme',
   initialState: INITIAL_STATE,
   reducers: {
+    /**
+     * Action payload is the new color scheme
+     */
     changeColorScheme: (state, action: PayloadAction<ColorSchemes>) => {
       state.colorScheme = action.payload;
     },

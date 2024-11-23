@@ -5,6 +5,13 @@ import { TextKeys } from './textKeyType';
 import { en, registerTranslation, tr } from 'react-native-paper-dates';
 import { tr as dateTr, enUS as dateEn } from 'date-fns/locale';
 
+/**
+ * Hook that helps with all localization related actions. It returns:
+ * - t: translator function
+ * - dateLocale: object to pass to date-fns format functions
+ * - currentLanguage: current language code
+ * - changeLanguage: function to change language
+ */
 export const useLocalization = () => {
   const localization = useTranslation();
 

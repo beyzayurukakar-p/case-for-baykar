@@ -6,6 +6,12 @@ import { mockDelay } from '../../../common/utils/mockServerWait';
 
 const URL = 'users';
 
+/**
+ * Signs up.
+ * Assumes the user is not already registered
+ * @param params `User`
+ * @returns the newly added User
+ */
 export const signup = async (params: Omit<User, 'id'>) => {
   let data: User | undefined;
   let error: TextKeys | undefined;

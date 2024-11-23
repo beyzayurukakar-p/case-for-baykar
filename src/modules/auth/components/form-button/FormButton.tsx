@@ -4,6 +4,10 @@ import { TextKeys, useLocalization } from '../../../../core/localization';
 import { useThemedStyles } from '../../../../core/colorScheme';
 import { createStyles } from './FormButton.styles';
 
+/**
+ * Button/s that are rendered on the bottom of Sign-in / Sign-up forms.
+ * There are two buttons: Main & Alternate
+ */
 const FormButton = (props: {
   onPressMainButton: () => void;
   mainButtonTextKey: TextKeys;

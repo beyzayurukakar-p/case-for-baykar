@@ -7,6 +7,11 @@ import { mockDelay } from '../../../common/utils/mockServerWait';
 const buildUrl = (nickname: string, password: string) =>
   `users?nickname=${nickname}&password=${password}`;
 
+/**
+ * Signs in
+ * @param params `{ nickname:string, password: string }`
+ * @returns User if credentials are correct. Throws error if not.
+ */
 export const signin = async (params: { nickname: string; password: string }) => {
   let data: User | undefined;
   let error: TextKeys | undefined;

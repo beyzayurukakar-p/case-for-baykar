@@ -23,10 +23,12 @@ const ProfileScreen = () => {
   const [confirmSignout, setConfirmSignout] = useState<boolean>(false);
 
   const _onPress_SignOut = () => {
+    // Require confirm to sign-out by asking for another tap
     if (confirmSignout === true) {
       dispatch(userSlice.actions.setUser(null));
     } else {
       setConfirmSignout(true);
+      // Expire confirmation after 2 seconds
       setTimeout(() => {
         setConfirmSignout(false);
       }, 2000);
