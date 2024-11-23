@@ -52,7 +52,7 @@ export const customColors = {
   dark: {
     primary: 'rgb(187, 195, 255)',
     onPrimary: 'rgb(17, 34, 134)',
-    primaryContainer: 'rgb(45, 60, 156)',
+    primaryContainer: '#344387',
     onPrimaryContainer: 'rgb(223, 224, 255)',
     secondary: 'rgb(165, 200, 255)',
     onSecondary: 'rgb(0, 49, 95)',
@@ -95,6 +95,6 @@ export const customColors = {
     surfaceDisabled: 'rgba(228, 225, 230, 0.12)',
     onSurfaceDisabled: 'rgba(228, 225, 230, 0.38)',
     backdrop: 'rgba(47, 48, 56, 0.4)',
-    backdropInverse: 'rgba(255, 255, 255, 0.8)',
+    backdropInverse: 'rgba(0, 0, 0, 0.8)',
   },
 };

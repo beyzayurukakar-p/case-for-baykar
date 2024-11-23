@@ -8,6 +8,7 @@ import { useLocalization } from '../../../core/localization';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../../../core/user';
 import { useNavigateToSurvey } from '../../surveys';
+import { useMemo } from 'react';
 
 const HomeScreen = () => {
   const styles = useThemedStyles(createStyles);
@@ -17,14 +18,33 @@ const HomeScreen = () => {
   const user = useSelector(selectUser);
   const navigateToSurvey = useNavigateToSurvey();
 
+  const gradientColors = useMemo(() => {
+    if (theme.dark) {
+      return [
+        theme.colors.backgroundTransparent,
+        theme.colors.backgroundTransparent,
+        theme.colors.surfaceVariant2,
+        theme.colors.background,
+      ];
+    }
+    return [theme.colors.backgroundTransparent, theme.colors.background];
+  }, [theme]);
+
+  const gradientLocations = useMemo(() => {
+    if (theme.dark) {
+      return [0, 0.1, 0.6, 0.8];
+    }
+    return [0, 0.2];
+  }, [theme]);
+
   return (
     <ImageBackground
       source={imageSources.background()}
       style={styles.imageBackground}
     >
       <LinearGradient
-        colors={[theme.colors.backgroundTransparent, theme.colors.background]}
-        locations={[0, 0.2]}
+        colors={gradientColors}
+        locations={gradientLocations}
         style={styles.gradient}
       >
         <Text variant="titleMedium">
@@ -36,6 +56,7 @@ const HomeScreen = () => {
           <Button
             mode="contained"
             contentStyle={styles.startSurveyButtonContent}
+            labelStyle={styles.startSurveyButtonLabel}
             onPress={navigateToSurvey}
           >
             {t('start-survey')}

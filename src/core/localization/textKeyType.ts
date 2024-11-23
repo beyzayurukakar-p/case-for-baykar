@@ -53,4 +53,6 @@ export type TextKeys =
   | 'your-response'
   | 'surveys-completed'
   | 'total'
-  | 'today';
+  | 'today'
+  | 'change-theme'
+  | 'change-locale';

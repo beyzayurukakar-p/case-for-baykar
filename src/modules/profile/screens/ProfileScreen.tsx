@@ -1,7 +1,7 @@
-import { SafeAreaView, View } from 'react-native';
+import { SafeAreaView, ScrollView, View } from 'react-native';
 import { Icon, Text } from 'react-native-paper';
 import { useLocalization } from '../../../core/localization';
-import { useAppTheme, useThemedStyles } from '../../../core/colorScheme';
+import { colorSchemeSlice, useAppTheme, useThemedStyles } from '../../../core/colorScheme';
 import { createStyles } from './ProfileScreen.styles';
 import dimensions from '../../../common/styling/dimensions';
 import CardUserField from '../components/profile-field/CardUserField';
@@ -14,7 +14,7 @@ import { useState } from 'react';
 const ProfileScreen = () => {
   const dispatch = useDispatch();
 
-  const { t, currentLanguage, dateLocale } = useLocalization();
+  const { t, currentLanguage, dateLocale, changeLanguage } = useLocalization();
   const styles = useThemedStyles(createStyles);
   const theme = useAppTheme();
 
@@ -31,6 +31,13 @@ const ProfileScreen = () => {
         setConfirmSignout(false);
       }, 2000);
     }
+  };
+
+  const _onPress_ChangeTheme = () => {
+    dispatch(colorSchemeSlice.actions.toggleColorScheme());
+  };
+  const _onPress_ChangeLocale = () => {
+    changeLanguage(currentLanguage === 'en' ? 'tr' : 'en');
   };
 
   const _renderHeader = () => {
@@ -63,7 +70,7 @@ const ProfileScreen = () => {
 
   return (
     <SafeAreaView style={styles.safeArea}>
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {_renderHeader()}
         {_renderSubtitle(t('account-info'))}
         <CardUserField
@@ -97,11 +104,19 @@ const ProfileScreen = () => {
         />
         {_renderSubtitle(t('actions'))}
         <CardButton
+          buttonText={t('change-locale')}
+          onPress={_onPress_ChangeLocale}
+        />
+        <CardButton
+          buttonText={t('change-theme')}
+          onPress={_onPress_ChangeTheme}
+        />
+        <CardButton
           buttonText={confirmSignout ? t('confirm-sign-out') : t('sign-out')}
           isDanger={true}
           onPress={_onPress_SignOut}
         />
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };

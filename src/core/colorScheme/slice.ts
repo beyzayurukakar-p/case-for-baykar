@@ -17,6 +17,9 @@ export const colorSchemeSlice = createSlice({
     changeColorScheme: (state, action: PayloadAction<ColorSchemes>) => {
       state.colorScheme = action.payload;
     },
+    toggleColorScheme: (state) => {
+      state.colorScheme = state.colorScheme === 'light' ? 'dark' : 'light';
+    },
   },
 });
 

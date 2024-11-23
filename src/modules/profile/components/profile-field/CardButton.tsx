@@ -7,7 +7,7 @@ const CardButton = (props: { buttonText: string; isDanger?: boolean; onPress: ()
   const styles = useThemedStyles(createStyles);
 
   return (
-    <Card>
+    <Card onPress={props.onPress}>
       <Text
         variant="bodyLarge"
         style={[props.isDanger ? styles.buttonTextDanger : styles.buttonText]}

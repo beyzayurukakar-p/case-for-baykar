@@ -16,12 +16,16 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
     },
     nicknameText: {
       color: colors.primary,
-      fontWeight: '600',
+      fontWeight: '800',
     },
     startSurveyButtonContainer: {
       marginTop: dimensions.rowSpace,
     },
     startSurveyButtonContent: {
+      backgroundColor: colors.primary,
       paddingHorizontal: dimensions.measure(15),
+    },
+    startSurveyButtonLabel: {
+      color: colors.onPrimary,
     },
   });

@@ -259,7 +259,9 @@
         "your-response": "Yanıtınız",
         "surveys-completed": "Tamamlanan Anketler",
         "total": "Toplam",
-        "today": "Bugün"
+        "today": "Bugün",
+        "change-theme": "Tema Değiştir",
+        "change-locale": "Dil Değiştir"
       }
     },
     "en": {
@@ -318,7 +320,9 @@
         "your-response": "Your Response",
         "surveys-completed": "Completed Surveys",
         "total": "Total",
-        "today": "Today"
+        "today": "Today",
+        "change-theme": "Change Theme",
+        "change-locale": "Change Language"
       }
     }
   }
