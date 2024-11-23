@@ -12,27 +12,29 @@ const CardUserField = (props: { fieldKey: keyof User; label: string; value: stri
 
   return (
     <Card>
-      <View style={styles.contentLeftContainer}>
-        <Text
-          variant="labelMedium"
-          style={styles.labelText}
-        >
-          {props.label}
-        </Text>
-        <Text
-          variant="bodyLarge"
-          style={styles.valueText}
-        >
-          {props.value || '-'}
-        </Text>
+      <View style={styles.contentContainer}>
+        <View style={styles.contentLeftContainer}>
+          <Text
+            variant="labelMedium"
+            style={styles.labelText}
+          >
+            {props.label}
+          </Text>
+          <Text
+            variant="bodyLarge"
+            style={styles.valueText}
+          >
+            {props.value || '-'}
+          </Text>
+        </View>
+        <IconButton
+          icon={'square-edit-outline'}
+          iconColor={theme.colors.primary}
+          size={dimensions.measure(20)}
+          onPress={() => {}}
+          style={styles.icon}
+        />
       </View>
-      <IconButton
-        icon={'square-edit-outline'}
-        iconColor={theme.colors.primary}
-        size={dimensions.measure(20)}
-        onPress={() => {}}
-        style={styles.icon}
-      />
     </Card>
   );
 };

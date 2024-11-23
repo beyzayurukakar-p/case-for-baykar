@@ -1,5 +1,5 @@
 import { createStyles } from './Card.styles';
-import { TouchableOpacity, View } from 'react-native';
+import { TouchableOpacity } from 'react-native';
 import { PropsWithChildren } from 'react';
 import { useThemedStyles } from '../../../core/colorScheme';
 
@@ -13,7 +13,7 @@ const Card = (props: PropsWithChildren<{ onPress?: () => void }>) => {
       disabled={!props.onPress}
       onPress={props.onPress}
     >
-      <View style={styles.contentContainer}>{props.children}</View>
+      {props.children}
     </TouchableOpacity>
   );
 };

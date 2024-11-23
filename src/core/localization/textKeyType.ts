@@ -50,4 +50,7 @@ export type TextKeys =
   | 'total-survey-duration'
   | 'result'
   | 'your-responses'
-  | 'your-response';
+  | 'your-response'
+  | 'surveys-completed'
+  | 'total'
+  | 'today';

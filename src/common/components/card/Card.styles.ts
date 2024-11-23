@@ -8,13 +8,8 @@ export const createStyles = ({ colors }: CreateStylesParams) =>
       backgroundColor: colors.elevation.level2,
       borderRadius: dimensions.measure(7),
       marginBottom: dimensions.rowSpace,
-      paddingLeft: dimensions.pageMargin,
-      paddingRight: dimensions.pageMargin * 0.4,
+      paddingHorizontal: dimensions.pageMargin,
       paddingVertical: dimensions.measure(10),
-    },
-    contentContainer: {
-      flexDirection: 'row',
-      alignItems: 'center',
     },
     contentLeftContainer: {
       flexGrow: 1,

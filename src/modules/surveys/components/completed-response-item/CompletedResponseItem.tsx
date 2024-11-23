@@ -8,6 +8,7 @@ import { GivenResponse } from '../../types/surveyTypes';
 import { formatDuration } from '../../utils/timerUtils';
 import { intervalToDuration } from 'date-fns';
 import { getResponseText } from '../../utils/getResponseText';
+import Card from '../../../../common/components/card/Card';
 
 const CompletedResponseItem = (props: { response: GivenResponse & { question: Question } }) => {
   const { response } = props;
@@ -16,7 +17,7 @@ const CompletedResponseItem = (props: { response: GivenResponse & { question: Qu
   const styles = useThemedStyles(createStyles);
 
   return (
-    <View style={styles.container}>
+    <Card>
       <View style={styles.topContainer}>
         <Text
           variant="bodyLarge"
@@ -44,7 +45,7 @@ const CompletedResponseItem = (props: { response: GivenResponse & { question: Qu
       >
         {getResponseText(response.response, response.question, t)}
       </Text>
-    </View>
+    </Card>
   );
 };
 

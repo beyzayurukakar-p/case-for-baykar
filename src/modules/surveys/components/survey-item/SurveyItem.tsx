@@ -2,35 +2,71 @@ import { Button, Icon, Text } from 'react-native-paper';
 import { createStyles } from './SurveyItem.styles';
 import { View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { OngoingSurvey, Survey } from '../../types/surveyTypes';
+import { CompletedSurvey, OngoingSurvey, Survey } from '../../types/surveyTypes';
 import { TextKeys, useLocalization } from '../../../../core/localization';
 import { useAppTheme, useThemedStyles } from '../../../../core/colorScheme';
 import dimensions from '../../../../common/styling/dimensions';
 import Card from '../../../../common/components/card/Card';
 import { formatDate, intervalToDuration } from 'date-fns';
 import { formatDuration } from '../../utils/timerUtils';
+import { useMemo } from 'react';
 
-const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
-  const { item } = props;
+const SurveyItem = (props: {
+  item: Survey | (Survey & OngoingSurvey) | CompletedSurvey;
+  onPress?: () => void;
+}) => {
+  const { item: surveyItem } = props;
 
   const { t, dateLocale } = useLocalization();
   const styles = useThemedStyles(createStyles);
   const theme = useAppTheme();
   const nav = useNavigation();
 
-  const isNewSurvey = !item.surveyDuration;
+  const status: 'ongoing' | 'completed' | 'new' = useMemo(() => {
+    if ((surveyItem as CompletedSurvey).completedOn) {
+      return 'completed';
+    }
+    if ((surveyItem as OngoingSurvey).lastUpdatedOn) {
+      return 'ongoing';
+    }
+    return 'new';
+  }, [surveyItem]);
+
+  const dateString = useMemo(() => {
+    if (status === 'completed') {
+      return formatDate((surveyItem as CompletedSurvey).completedOn, 'PP', { locale: dateLocale });
+    }
+    if (status === 'ongoing') {
+      return formatDate((surveyItem as OngoingSurvey).lastUpdatedOn as string, 'PP', {
+        locale: dateLocale,
+      });
+    }
+    return '-';
+  }, [status, surveyItem, dateLocale]);
+
+  const timeString = useMemo(() => {
+    if (status === 'completed' || status === 'ongoing') {
+      return formatDuration(
+        intervalToDuration({
+          start: 0,
+          end: (surveyItem as CompletedSurvey | OngoingSurvey).surveyDuration,
+        })
+      );
+    }
+    return '-';
+  }, [status, surveyItem]);
 
   const _onPress_StartContinue = () => {
     nav.navigate('SignedIn', {
       screen: 'Survey',
       params: {
-        surveyId: item.id,
+        surveyId: surveyItem.id,
       },
     });
   };
 
-  const _renderOngoingPart = () => {
-    if (isNewSurvey) {
+  const _renderDateTimePart = () => {
+    if (status === 'new') {
       return null;
     }
 
@@ -45,7 +81,7 @@ const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
           variant="bodySmall"
           style={styles.dateTimeText}
         >
-          {item.lastUpdatedOn ? formatDate(item.lastUpdatedOn, 'PP', { locale: dateLocale }) : '-'}
+          {dateString}
         </Text>
         <Icon
           source={'clock-edit-outline'}
@@ -56,16 +92,14 @@ const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
           variant="bodySmall"
           style={styles.dateTimeText}
         >
-          {item.surveyDuration
-            ? formatDuration(intervalToDuration({ start: 0, end: item.surveyDuration }))
-            : '-'}
+          {timeString}
         </Text>
       </View>
     );
   };
 
   return (
-    <Card>
+    <Card onPress={props.onPress}>
       <View style={styles.container}>
         <View style={styles.topContainer}>
           <Text
@@ -73,18 +107,20 @@ const SurveyItem = (props: { item: Survey & Partial<OngoingSurvey> }) => {
             style={styles.surveyTitleText}
             numberOfLines={1}
           >
-            {t(item.title as TextKeys)}
+            {t(surveyItem.title as TextKeys)}
           </Text>
-          <Button
-            mode={'outlined'}
-            onPress={_onPress_StartContinue}
-            contentStyle={styles.buttonContent}
-            labelStyle={styles.buttonLabel}
-          >
-            {t(isNewSurvey ? 'start' : 'continue')}
-          </Button>
+          {status !== 'completed' ? (
+            <Button
+              mode={'outlined'}
+              onPress={_onPress_StartContinue}
+              contentStyle={styles.buttonContent}
+              labelStyle={styles.buttonLabel}
+            >
+              {t(status === 'new' ? 'start' : 'continue')}
+            </Button>
+          ) : null}
         </View>
-        {_renderOngoingPart()}
+        {_renderDateTimePart()}
       </View>
     </Card>
   );

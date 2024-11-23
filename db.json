@@ -256,7 +256,10 @@
         "total-survey-duration": "Toplam Süre",
         "result": "Sonuç",
         "your-responses": "Yanıtlarınız",
-        "your-response": "Yanıtınız"
+        "your-response": "Yanıtınız",
+        "surveys-completed": "Tamamlanan Anketler",
+        "total": "Toplam",
+        "today": "Bugün"
       }
     },
     "en": {
@@ -312,7 +315,10 @@
         "total-survey-duration": "Total Duration",
         "result": "Result",
         "your-responses": "Your Responses",
-        "your-response": "Your Response"
+        "your-response": "Your Response",
+        "surveys-completed": "Completed Surveys",
+        "total": "Total",
+        "today": "Today"
       }
     }
   }

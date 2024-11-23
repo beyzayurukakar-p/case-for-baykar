@@ -3,6 +3,10 @@ import { CreateStylesParams } from '../../../../core/colorScheme';
 
 export const createStyles = ({ colors }: CreateStylesParams) =>
   StyleSheet.create({
+    contentContainer: {
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
     contentLeftContainer: {
       flexGrow: 1,
       flexShrink: 1,
