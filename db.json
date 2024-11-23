@@ -28,13 +28,13 @@
   "surveys": [
     {
       "id": 2,
-      "title": "The Perfect Survey",
+      "title": "The Short Survey",
       "questions": [
         {
-          "id": 4,
-          "order": 4,
+          "id": 1,
+          "order": 1,
           "type": "slider",
-          "text": "Bugüne kaç puan verirsin?",
+          "text": "Just rate!",
           "responseData": {
             "min": 0,
             "max": 100,
@@ -45,7 +45,7 @@
     },
     {
       "id": 1,
-      "title": "your-mode",
+      "title": "Bugünkü Modunuz",
       "questions": [
         {
           "id": 1,
@@ -148,31 +148,31 @@
             "options": [
               {
                 "order": 1,
-                "label": "very-good",
+                "label": "Çok İyi",
                 "value": 4,
                 "color": "#24C133"
               },
               {
                 "order": 2,
-                "label": "good",
+                "label": "İyi",
                 "value": 3,
                 "color": "#ACBC1C"
               },
               {
                 "order": 3,
-                "label": "average",
+                "label": "Orta",
                 "value": 2,
                 "color": "#E3C712"
               },
               {
                 "order": 4,
-                "label": "bad",
+                "label": "Kötü",
                 "value": 1,
                 "color": "#FF8B00"
               },
               {
                 "order": 5,
-                "label": "very-bad",
+                "label": "Çok Kötü",
                 "value": 0,
                 "color": "#FF2E25"
               }
