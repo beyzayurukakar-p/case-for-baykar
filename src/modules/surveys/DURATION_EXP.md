@@ -18,3 +18,11 @@ Böylece iki işlem arasında geçen süreler hesaplanabildi.
 - 00:11 - Soru A cevaplandı. -> Soru A, 5+1 = 6 saniye sürdü.
 - 00:12 - Soru B görüntülendi.
 - 00:15 - Anket bitirildi.
+
+__________________________
+**Case Submit edildikten sonra eklenen not:**
+
+Yukarıdaki algoritmada şöyle bir açık var:
+Kullanıcı soruyu bir süre görüntüleyip, cevap vermeden veya cevabını güncellemeden başka soruya geçerse, bu görüntüleme süresi kayboluyor. Bunu çözmek için, bu görüntüleme süresini soru içinde 'tempDuration' gibi bir alanda tutmak gerekiyor. Daha sonra cevap verildiğinde veya cevap güncellendiğinde ise bu 'tempDuration'ı da eklemek gerekiyor.
+
+__________________________
